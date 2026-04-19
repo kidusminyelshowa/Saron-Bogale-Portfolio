@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Mea+Culpa&display=swap');
+
+/* Design System & Variables */
+:root {
+  --bg-color: #18542a;
+  /* Deep Green for the loader */
+  --text-sand: #f3e8cc;
+  --text-dark: #0d1617;
+  --accent-yellow: #ffc928;
+  --accent-red: #d52518;
+  --accent-orange: #f96015;
+  --accent-leaf: #9abc05;
+
+  --font-main: 'Cabin', sans-serif;
+  --font-emphasis: 'Mea Culpa', cursive;
+
+  --transition-speed: 0.8s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--text-sand);
+  font-family: var(--font-main);
+  color: var(--text-dark);
+  overflow: hidden;
+  /* Prevent scrolling during loading */
+}
+
+.emphasis {
+  font-family: var(--font-emphasis);
+  font-weight: 400;
+}
+
+/* Loader Container */
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity var(--transition-speed) ease-in-out, visibility var(--transition-speed);
+  overflow: hidden;
+  /* Ensure overflow from scaled SVG is hidden */
+}
+
+#loader-wrapper.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-svg {
+  width: 120vw;
+  /* Slightly larger than viewport */
+  min-width: 1300px;
+  /* Ensure it doesn't get too small on mobile */
+  height: auto;
+  flex-shrink: 0;
+}
+
+.loader-path {
+  fill: none;
+  stroke: var(--text-sand);
+  stroke-width: 20px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 5000;
+  /* Will be set accurately by JS */
+  stroke-dashoffset: 5000;
+  animation: drawPath 4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  filter: drop-shadow(0 0 8px rgba(243, 232, 204, 0.4));
+}
+
+@keyframes drawPath {
+  0% {
+    stroke-dashoffset: 5000;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Main Content (Hidden initially) */
+#main-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+#main-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--text-dark);
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.6;
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--text-sand);
+}
+
+.hero-title {
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* Narrative Section - Editorial Style */
+.narrative {
+  background-color: var(--text-sand);
+  padding: 20vh 0;
+  color: var(--text-dark);
+}
+
+.narrative-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+.narrative-row {
+  display: flex;
+  align-items: center;
+  gap: 10vw;
+  margin-bottom: 30vh;
+}
+
+.narrative-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.narrative-text {
+  flex: 1.2;
+}
+
+.large-text {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.narrative-media {
+  flex: 0.8;
+  height: 70vh;
+  position: relative;
+}
+
+.color-block {
+  width: 100%;
+  height: 100%;
+  box-shadow: 40px 40px 0px rgba(0, 0, 0, 0.05);
+  /* Architectural shadow */
+}
+
+@media (max-width: 1024px) {
+
+  .narrative-row,
+  .narrative-row.reverse {
+    flex-direction: column;
+    gap: 5vh;
+    margin-bottom: 15vh;
+    text-align: left;
+  }
+
+  .narrative-media {
+    width: 100%;
+    height: 50vh;
+  }
+}

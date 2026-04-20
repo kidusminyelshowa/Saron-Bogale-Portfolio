@@ -38,7 +38,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#18542a] overflow-hidden"
         >
           <svg
-            className="w-[150vw] min-w-[2000px] h-auto pointer-events-none"
+            className="w-[95vw] min-w-[300px] md:w-[150vw] md:min-w-[2000px] h-auto pointer-events-none"
             viewBox="-20 -40 1204 380"
             xmlns="http://www.w3.org/2000/svg"
           >

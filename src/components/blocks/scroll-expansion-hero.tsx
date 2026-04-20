@@ -162,7 +162,7 @@ const ScrollExpandMedia = ({
   }, []);
 
   const mediaWidthVw = isMobileState
-    ? 55 + scrollProgress * 40   // 55vw → 95vw on mobile
+    ? 65 + scrollProgress * 30   // 65vw → 95vw on mobile
     : 20 + scrollProgress * 75;  // 20vw → 95vw on desktop
   const mediaHeightVh = isMobileState
     ? 50 + scrollProgress * 35   // 50vh → 85vh on mobile
@@ -220,11 +220,11 @@ const ScrollExpandMedia = ({
                         src={
                           mediaSrc.includes('embed')
                             ? mediaSrc +
-                              (mediaSrc.includes('?') ? '&' : '?') +
-                              'autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1'
+                            (mediaSrc.includes('?') ? '&' : '?') +
+                            'autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1'
                             : mediaSrc.replace('watch?v=', 'embed/') +
-                              '?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1&playlist=' +
-                              mediaSrc.split('v=')[1]
+                            '?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1&playlist=' +
+                            mediaSrc.split('v=')[1]
                         }
                         className='w-full h-full rounded-xl border-none'
                         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -275,7 +275,7 @@ const ScrollExpandMedia = ({
                       fill
                       sizes='95vw'
                       priority
-                      style={{ objectPosition: isMobileState ? 'calc(50% - 40px) 15%' : 'center' }}
+                      style={{ objectPosition: isMobileState ? '35% 15%' : 'center' }}
                       className='w-full h-full object-cover rounded-xl'
                     />
 
@@ -292,9 +292,9 @@ const ScrollExpandMedia = ({
                   {date && (
                     <p
                       className='text-xl font-medium'
-                      style={{ 
+                      style={{
                         transform: `translateX(-${textTranslateX}vw)`,
-                        color: '#f3e8cc' 
+                        color: '#f3e8cc'
                       }}
                     >
                       {date}
@@ -304,18 +304,17 @@ const ScrollExpandMedia = ({
               </div>
 
               <div
-                className={`flex items-center justify-center text-center gap-4 w-full relative z-10 transition-none flex-col ${
-                  textBlend ? 'mix-blend-normal' : 'mix-blend-normal'
-                }`}
+                className={`flex items-center justify-center text-center gap-4 w-full relative z-10 transition-none flex-col ${textBlend ? 'mix-blend-normal' : 'mix-blend-normal'
+                  }`}
               >
                 <motion.h2
-                  className='text-[12vw] sm:text-6xl md:text-7xl lg:text-8xl font-black text-brand-yellow tracking-tighter transition-none leading-[0.9]'
+                  className='text-[16vw] sm:text-6xl md:text-7xl lg:text-8xl font-black text-brand-yellow tracking-tighter transition-none leading-[0.8]'
                   style={{ transform: `translateX(-${textTranslateX}vw)` }}
                 >
                   {firstWord}
                 </motion.h2>
                 <motion.h2
-                  className='text-[12vw] sm:text-6xl md:text-7xl lg:text-8xl font-normal emphasis text-center text-brand-yellow tracking-normal transition-none leading-[0.9]'
+                  className='text-[16vw] sm:text-6xl md:text-7xl lg:text-8xl font-normal emphasis text-center text-brand-yellow tracking-normal transition-none leading-[0.8]'
                   style={{ transform: `translateX(${textTranslateX}vw)` }}
                 >
                   {restOfTitle}
@@ -324,7 +323,7 @@ const ScrollExpandMedia = ({
             </div>
 
             <motion.section
-              className='flex flex-col w-full px-8 py-10 md:px-16 lg:py-20 mt-12 md:mt-0'
+              className='flex flex-col w-full px-8 py-10 md:px-16 lg:py-20 mt-4 md:mt-0'
               initial={{ opacity: 0 }}
               animate={{ opacity: showContent ? 1 : 0 }}
               transition={{ duration: 0.7 }}

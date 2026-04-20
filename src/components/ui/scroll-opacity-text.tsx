@@ -20,8 +20,8 @@ export default function ScrollOpacityText({ text, title, className }: ScrollOpac
   const words = text.split(' ');
 
   return (
-    <div ref={containerRef} className="relative h-[200vh] md:h-[600vh] w-full">
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center p-6 sm:p-12 md:p-24 overflow-hidden">
+    <div ref={containerRef} className="relative h-[120vh] md:h-[600vh] w-full">
+      <div className="sticky top-0 min-h-[70vh] md:h-screen flex flex-col items-start md:items-center justify-center p-6 pt-[15vh] sm:p-12 md:p-24 overflow-hidden">
         <div className="max-w-[1800px] w-full">
           {title && (
             <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 md:mb-16 tracking-tighter leading-none text-brand-obsidian">

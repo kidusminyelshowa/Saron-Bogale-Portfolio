@@ -162,7 +162,7 @@ const ScrollExpandMedia = ({
   }, []);
 
   const mediaWidthVw = isMobileState
-    ? 40 + scrollProgress * 55   // 40vw → 95vw on mobile
+    ? 55 + scrollProgress * 40   // 55vw → 95vw on mobile
     : 20 + scrollProgress * 75;  // 20vw → 95vw on desktop
   const mediaHeightVh = isMobileState
     ? 50 + scrollProgress * 35   // 50vh → 85vh on mobile
@@ -275,7 +275,7 @@ const ScrollExpandMedia = ({
                       fill
                       sizes='95vw'
                       priority
-                      style={{ objectPosition: isMobileState ? 'calc(50% - 50px) center' : 'center' }}
+                      style={{ objectPosition: isMobileState ? 'calc(50% - 40px) 15%' : 'center' }}
                       className='w-full h-full object-cover rounded-xl'
                     />
 
@@ -309,13 +309,13 @@ const ScrollExpandMedia = ({
                 }`}
               >
                 <motion.h2
-                  className='text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-brand-yellow tracking-tighter transition-none'
+                  className='text-[12vw] sm:text-6xl md:text-7xl lg:text-8xl font-black text-brand-yellow tracking-tighter transition-none leading-[0.9]'
                   style={{ transform: `translateX(-${textTranslateX}vw)` }}
                 >
                   {firstWord}
                 </motion.h2>
                 <motion.h2
-                  className='text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-normal emphasis text-center text-brand-yellow tracking-normal transition-none'
+                  className='text-[12vw] sm:text-6xl md:text-7xl lg:text-8xl font-normal emphasis text-center text-brand-yellow tracking-normal transition-none leading-[0.9]'
                   style={{ transform: `translateX(${textTranslateX}vw)` }}
                 >
                   {restOfTitle}
@@ -324,7 +324,7 @@ const ScrollExpandMedia = ({
             </div>
 
             <motion.section
-              className='flex flex-col w-full px-8 py-10 md:px-16 lg:py-20 mt-[20vh] md:mt-0'
+              className='flex flex-col w-full px-8 py-10 md:px-16 lg:py-20 mt-12 md:mt-0'
               initial={{ opacity: 0 }}
               animate={{ opacity: showContent ? 1 : 0 }}
               transition={{ duration: 0.7 }}

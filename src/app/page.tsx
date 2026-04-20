@@ -16,12 +16,11 @@ export default function Home() {
     <main className="min-h-screen">
       <Loader onComplete={() => setLoadingComplete(true)} />
 
-      {loadingComplete && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: loadingComplete ? 1 : 0 }}
+        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+      >
           {/* Hero Section */}
           <ScrollExpandMedia
             mediaType="image"
@@ -35,7 +34,7 @@ export default function Home() {
             <div className="w-full bg-brand-sand">
               <ScrollOpacityText
                 title="I am Saron Bogale"
-                className="text-5xl md:text-5xl lg:text-5xl font-normal leading-[1.1] tracking-normal"
+                className="text-lg sm:text-2xl md:text-5xl lg:text-5xl font-normal leading-[1.1] tracking-normal"
                 text="An architect, muralist and set designer based in Addis Ababa Ethiopia, with over seven years of experience in mural art. My work focuses on transforming spaces and engaging communities through public art, murals, and creative projects. I am also the founder of JONIYA Studio, where we teach art to kids and host art-related events. I often collaborate with cultural spaces and creative hubs; my practice involves developing concepts, working on-site, and engaging closely with teams and communities."
               />
             </div>
@@ -44,11 +43,11 @@ export default function Home() {
           {/* Project Vault (Tabs) */}
           <ProjectGallery />
 
-          <section className="bg-brand-sand py-32 text-brand-obsidian">
-            <div className="max-w-[1700px] mx-auto px-12 md:px-24">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <section className="bg-brand-sand py-16 md:py-32 text-brand-obsidian">
+            <div className="max-w-[1700px] mx-auto px-6 md:px-24">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-center">
                 <div>
-                  <p className="text-5xl md:text-7xl font-bold mb-16 leading-none tracking-tight">
+                  <p className="text-3xl sm:text-5xl md:text-7xl font-bold mb-8 md:mb-16 leading-none tracking-tight">
                     Crafting <span className="emphasis font-normal">Experiences</span> through Art.
                   </p>
 
@@ -82,7 +81,8 @@ export default function Home() {
                     src="/4E2A0093.webp"
                     alt="Saron Bogale at work"
                     fill
-                    style={{ objectPosition: '-500px center' }}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    style={{ objectPosition: 'center center' }}
                     className="rounded-2xl shadow-2xl relative z-10 object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   />
                 </div>
@@ -93,7 +93,6 @@ export default function Home() {
           {/* Contact & Footer Section */}
           <Contact />
         </motion.div>
-      )}
     </main>
   );
 }

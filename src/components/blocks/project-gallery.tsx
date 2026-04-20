@@ -78,7 +78,7 @@ export default function ProjectGallery() {
     <section className="bg-brand-obsidian pt-24 pb-0 overflow-hidden">
       <div className="w-full">
         <div className="px-6 md:px-20 mb-12">
-          <p className="text-6xl md:text-9xl font-black text-white tracking-tighter leading-none">
+          <p className="text-4xl sm:text-6xl md:text-9xl font-black text-white tracking-tighter leading-none">
              THE <span className="emphasis font-normal text-brand-sand">Vault</span>
           </p>
         </div>
@@ -137,6 +137,7 @@ export default function ProjectGallery() {
                          src={project.img} 
                          alt={project.title}
                          fill
+                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                          className="object-cover object-center"
                        />
 

@@ -7,10 +7,16 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Simulate asset loading or wait for window.load
+    const startTime = Date.now();
+    const minWaitTime = 4000; // The SVG draws over 3.5 seconds
+
     const handleLoad = () => {
-      // Small buffer for the animation to be seen
-      setTimeout(() => setIsLoaded(true), 4000);
+      const elapsedTime = Date.now() - startTime;
+      const remainingTime = Math.max(0, minWaitTime - elapsedTime);
+      
+      setTimeout(() => {
+        setIsLoaded(true);
+      }, remainingTime);
     };
 
     if (document.readyState === 'complete') {
@@ -25,15 +31,15 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
     <AnimatePresence onExitComplete={onComplete}>
       {!isLoaded && (
         <motion.div
-          key="loader"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#18542a] overflow-hidden"
+           key="loader"
+           initial={{ opacity: 1 }}
+           exit={{ opacity: 0 }}
+           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+           className="fixed inset-0 z-[100] flex items-center justify-center bg-[#18542a] overflow-hidden"
         >
           <svg
             className="w-[150vw] min-w-[2000px] h-auto pointer-events-none"
-            viewBox="0 0 1164.72 290.21"
+            viewBox="-20 -40 1204 380"
             xmlns="http://www.w3.org/2000/svg"
           >
             <motion.path

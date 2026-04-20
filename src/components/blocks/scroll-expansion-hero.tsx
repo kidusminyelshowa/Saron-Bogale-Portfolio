@@ -87,7 +87,7 @@ const ScrollExpandMedia = ({
       } else if (!mediaFullyExpanded) {
         e.preventDefault();
         // Increase sensitivity for mobile, especially when scrolling back
-        const scrollFactor = deltaY < 0 ? 0.008 : 0.005; // Higher sensitivity for scrolling back
+        const scrollFactor = deltaY < 0 ? 0.012 : 0.008;
         const scrollDelta = deltaY * scrollFactor;
         const newProgress = Math.min(
           Math.max(scrollProgress + scrollDelta, 0),
@@ -161,9 +161,13 @@ const ScrollExpandMedia = ({
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  const mediaWidth = 300 + scrollProgress * (isMobileState ? 650 : 1250);
-  const mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
-  const textTranslateX = scrollProgress * (isMobileState ? 180 : 150);
+  const mediaWidthVw = isMobileState
+    ? 40 + scrollProgress * 55   // 40vw → 95vw on mobile
+    : 20 + scrollProgress * 75;  // 20vw → 95vw on desktop
+  const mediaHeightVh = isMobileState
+    ? 50 + scrollProgress * 35   // 50vh → 85vh on mobile
+    : 50 + scrollProgress * 40;  // 50vh → 90vh on desktop
+  const textTranslateX = scrollProgress * (isMobileState ? 120 : 150);
 
   const firstWord = title ? title.split(' ')[0] : '';
   const restOfTitle = title ? title.split(' ').slice(1).join(' ') : '';
@@ -186,6 +190,7 @@ const ScrollExpandMedia = ({
                 src={bgImageSrc}
                 alt='Background'
                 fill
+                sizes='100vw'
                 className='w-full h-full object-cover object-center'
                 priority
               />
@@ -196,13 +201,14 @@ const ScrollExpandMedia = ({
           <div className='container mx-auto flex flex-col items-center justify-start relative z-10'>
             <div className='flex flex-col items-center justify-center w-full h-[100dvh] relative'>
               <div
-                className='absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-none rounded-2xl'
+                className='absolute z-0 top-1/2 left-1/2 transition-none rounded-2xl'
                 style={{
-                  width: `${mediaWidth}px`,
-                  height: `${mediaHeight}px`,
-                  maxWidth: '95vw',
-                  maxHeight: '85vh',
+                  width: `${mediaWidthVw}vw`,
+                  height: `${mediaHeightVh}vh`,
+                  transform: 'translate(-50%, -50%)',
                   boxShadow: '0px 0px 50px rgba(0, 0, 0, 0.3)',
+                  willChange: 'width, height',
+                  contain: 'layout style',
                 }}
               >
                 {mediaType === 'video' ? (
@@ -267,7 +273,10 @@ const ScrollExpandMedia = ({
                       src={mediaSrc}
                       alt={title || 'Media content'}
                       fill
-                      className='w-full h-full object-cover object-center rounded-xl'
+                      sizes='95vw'
+                      priority
+                      style={{ objectPosition: isMobileState ? 'calc(50% - 50px) center' : 'center' }}
+                      className='w-full h-full object-cover rounded-xl'
                     />
 
                     <motion.div
@@ -300,13 +309,13 @@ const ScrollExpandMedia = ({
                 }`}
               >
                 <motion.h2
-                  className='text-5xl md:text-7xl lg:text-8xl font-black text-brand-yellow tracking-tighter transition-none'
+                  className='text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-brand-yellow tracking-tighter transition-none'
                   style={{ transform: `translateX(-${textTranslateX}vw)` }}
                 >
                   {firstWord}
                 </motion.h2>
                 <motion.h2
-                  className='text-5xl md:text-7xl lg:text-8xl font-normal emphasis text-center text-brand-yellow tracking-normal transition-none'
+                  className='text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-normal emphasis text-center text-brand-yellow tracking-normal transition-none'
                   style={{ transform: `translateX(${textTranslateX}vw)` }}
                 >
                   {restOfTitle}
@@ -315,7 +324,7 @@ const ScrollExpandMedia = ({
             </div>
 
             <motion.section
-              className='flex flex-col w-full px-8 py-10 md:px-16 lg:py-20'
+              className='flex flex-col w-full px-8 py-10 md:px-16 lg:py-20 mt-[20vh] md:mt-0'
               initial={{ opacity: 0 }}
               animate={{ opacity: showContent ? 1 : 0 }}
               transition={{ duration: 0.7 }}

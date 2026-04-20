@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Mea+Culpa&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -24,8 +23,8 @@
   --color-brand-leaf: var(--brand-leaf);
   --color-brand-sand: var(--background);
   
-  --font-brand: 'Cabin', sans-serif;
-  --font-emphasis: 'Mea Culpa', cursive;
+  --font-brand: var(--font-cabin), sans-serif;
+  --font-emphasis: var(--font-mea-culpa), cursive;
 }
 
 body {

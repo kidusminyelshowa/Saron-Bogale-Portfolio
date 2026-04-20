@@ -59,9 +59,9 @@ body {
 }
 
 .loader-svg {
-  width: 120vw;
+  width: 110vw;
   /* Slightly larger than viewport */
-  min-width: 1300px;
+  min-width: 1200px;
   /* Ensure it doesn't get too small on mobile */
   height: auto;
   flex-shrink: 0;

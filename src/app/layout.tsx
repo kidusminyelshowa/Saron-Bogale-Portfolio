@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cabin, Mea_Culpa } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cabin = Cabin({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cabin",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const meaCulpa = Mea_Culpa({
+  weight: "400",
   subsets: ["latin"],
+  variable: "--font-mea-culpa",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased w-full max-w-[100vw] overflow-x-hidden`}
+      className={`${cabin.variable} ${meaCulpa.variable} h-full antialiased w-full max-w-[100vw] overflow-x-hidden`}
     >
       <body className="min-h-full flex flex-col w-full max-w-[100vw] overflow-x-hidden">{children}</body>
     </html>

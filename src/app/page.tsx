@@ -13,7 +13,7 @@ export default function Home() {
   const [loadingComplete, setLoadingComplete] = useState(false);
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen w-full overflow-x-hidden">
       <Loader onComplete={() => setLoadingComplete(true)} />
 
       <motion.div
@@ -45,7 +45,7 @@ export default function Home() {
 
           <section className="bg-brand-sand py-16 md:py-32 text-brand-obsidian">
             <div className="max-w-[1700px] mx-auto px-6 md:px-24">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
                 <div>
                   <p className="text-3xl sm:text-5xl md:text-7xl font-bold mb-8 md:mb-16 leading-none tracking-tight">
                     Crafting <span className="emphasis font-normal">Experiences</span> through Art.

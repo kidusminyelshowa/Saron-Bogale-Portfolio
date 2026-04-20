@@ -39,6 +39,7 @@ const ScrollExpandMedia = ({
   const [mediaFullyExpanded, setMediaFullyExpanded] = useState<boolean>(false);
   const [touchStartY, setTouchStartY] = useState<number>(0);
   const [isMobileState, setIsMobileState] = useState<boolean>(false);
+  const [isTabletState, setIsTabletState] = useState<boolean>(false);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -151,23 +152,29 @@ const ScrollExpandMedia = ({
   }, [scrollProgress, mediaFullyExpanded, touchStartY]);
 
   useEffect(() => {
-    const checkIfMobile = (): void => {
-      setIsMobileState(window.innerWidth < 768);
+    const checkDevice = (): void => {
+      const w = window.innerWidth;
+      setIsMobileState(w < 768);
+      setIsTabletState(w >= 768 && w < 1024);
     };
 
-    checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
 
-    return () => window.removeEventListener('resize', checkIfMobile);
+    return () => window.removeEventListener('resize', checkDevice);
   }, []);
 
   const mediaWidthVw = isMobileState
     ? 65 + scrollProgress * 30   // 65vw → 95vw on mobile
+    : isTabletState
+    ? 35 + scrollProgress * 60   // 35vw → 95vw on tablet
     : 20 + scrollProgress * 75;  // 20vw → 95vw on desktop
   const mediaHeightVh = isMobileState
     ? 50 + scrollProgress * 35   // 50vh → 85vh on mobile
+    : isTabletState
+    ? 45 + scrollProgress * 40   // 45vh → 85vh on tablet
     : 50 + scrollProgress * 40;  // 50vh → 90vh on desktop
-  const textTranslateX = scrollProgress * (isMobileState ? 120 : 150);
+  const textTranslateX = scrollProgress * (isMobileState ? 120 : isTabletState ? 130 : 150);
 
   const firstWord = title ? title.split(' ')[0] : '';
   const restOfTitle = title ? title.split(' ').slice(1).join(' ') : '';

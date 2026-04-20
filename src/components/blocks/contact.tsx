@@ -8,7 +8,7 @@ export default function Contact() {
   return (
     <footer className="bg-brand-obsidian py-16 md:py-32 px-6 md:px-20 border-t border-white/5" style={{ color: neutralSand }}>
       <div className="max-w-[1800px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-end">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-end">
           <div>
             <p className="text-3xl sm:text-6xl md:text-8xl font-black tracking-tighter leading-none mb-8 md:mb-12">
               Let&apos;s <span className="emphasis font-normal text-brand-yellow">Collaborate</span>

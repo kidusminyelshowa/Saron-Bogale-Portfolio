@@ -31,19 +31,10 @@ export default function ScrollOpacityText({ text, title, className }: ScrollOpac
   };
 
   return (
-    <div 
-      ref={containerRef} 
-      className="relative w-full py-24 px-6 md:px-24 bg-brand-sand overflow-hidden cursor-none sm:cursor-default"
-      onMouseMove={handleMouseMove}
-      onTouchMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onTouchStart={() => setIsHovered(true)}
-      onTouchEnd={() => setIsHovered(false)}
-    >
-      <div className="max-w-[1800px] mx-auto pointer-events-none">
+    <div className="relative w-full py-24 bg-brand-sand overflow-hidden">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-24">
         {title && (
-          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 md:mb-16 tracking-tighter leading-none text-brand-obsidian">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 md:mb-16 tracking-tighter leading-none text-brand-obsidian pointer-events-none">
             {title.split(' ').map((word, i) => (
               <span key={i} className={word === 'Bogale' ? 'emphasis font-normal' : ''}>
                 {word}{' '}
@@ -52,9 +43,18 @@ export default function ScrollOpacityText({ text, title, className }: ScrollOpac
           </h2>
         )}
 
-        <div className="relative">
+        <div 
+          ref={containerRef}
+          className="relative cursor-none sm:cursor-default"
+          onMouseMove={handleMouseMove}
+          onTouchMove={handleMouseMove}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
+        >
           {/* Base Layer: 20% Opacity */}
-          <p className={`font-normal text-brand-obsidian opacity-20 select-none ${className}`}>
+          <p className={`font-normal text-brand-obsidian opacity-20 select-none pointer-events-none ${className}`}>
             {text}
           </p>
 
@@ -63,8 +63,8 @@ export default function ScrollOpacityText({ text, title, className }: ScrollOpac
             className={`absolute inset-0 font-normal text-brand-obsidian select-none pointer-events-none transition-opacity duration-300 ${className}`}
             style={{
               opacity: isHovered ? 1 : 0,
-              maskImage: `radial-gradient(circle 150px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
-              WebkitMaskImage: `radial-gradient(circle 150px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
+              maskImage: `radial-gradient(circle 120px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
+              WebkitMaskImage: `radial-gradient(circle 120px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
             }}
           >
             {text}

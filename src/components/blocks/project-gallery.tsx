@@ -83,12 +83,12 @@ export default function ProjectGallery() {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-end relative z-10 px-2 md:px-10 -mb-[1px]">
+        <div className="flex overflow-x-auto no-scrollbar items-end relative z-10 px-6 md:px-10 -mb-[1px]">
           {CATEGORY_CONFIG.map((cat: any) => (
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat)}
-              className={`relative px-6 py-2 md:px-12 md:py-4 transition-all duration-300 group cursor-pointer ${
+              className={`relative flex-shrink-0 px-6 py-2 md:px-12 md:py-4 transition-all duration-300 group cursor-pointer whitespace-nowrap ${
                 activeTab.id === cat.id ? 'z-40' : 'text-white/40 hover:text-white z-0'
               }`}
             >

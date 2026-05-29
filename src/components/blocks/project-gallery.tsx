@@ -68,7 +68,7 @@ function resolveProjectEntry(
 }
 
 export default function ProjectGallery() {
-  const [activeTab, setActiveTab] = useState(CATEGORY_CONFIG[0]);
+  const [activeTab, setActiveTab] = useState<(typeof CATEGORY_CONFIG)[number]>(CATEGORY_CONFIG[0]);
   const [selectedProject, setSelectedProject] = useState<any>(null);
 
   const categoryProjects =

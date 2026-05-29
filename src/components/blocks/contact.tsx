@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 
 export default function Contact() {
-  const neutralSand = '#f3e8cc';
+  const neutralSand = '#F4F7FA';
 
   return (
     <footer className="bg-brand-obsidian py-16 md:py-32 px-6 md:px-20 border-t border-white/5" style={{ color: neutralSand }}>
@@ -11,19 +11,19 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-end">
           <div>
             <p className="text-3xl sm:text-6xl md:text-8xl font-black tracking-tighter leading-none mb-8 md:mb-12">
-              Let&apos;s <span className="emphasis font-normal text-brand-yellow">Collaborate</span>
+              Let&apos;s <span className="emphasis font-normal text-brand-coral">Collaborate</span>
             </p>
             
             <div className="space-y-6">
               <a 
                 href="mailto:bogalesaron@gmail.com" 
-                className="text-lg sm:text-2xl md:text-4xl font-medium border-b-2 border-brand-yellow pb-2 hover:text-brand-yellow transition-colors duration-300 block w-fit break-all sm:break-normal"
+                className="text-lg sm:text-2xl md:text-4xl font-medium border-b-2 border-brand-coral pb-2 hover:text-brand-coral transition-colors duration-300 block w-fit break-all sm:break-normal"
               >
                 bogalesaron@gmail.com
               </a>
               <a 
                 href="tel:+251931313204" 
-                className="text-base sm:text-xl md:text-2xl font-medium opacity-80 hover:text-brand-yellow transition-colors duration-300 block w-fit"
+                className="text-base sm:text-xl md:text-2xl font-medium opacity-80 hover:text-brand-coral transition-colors duration-300 block w-fit"
               >
                 +251 931 313 204
               </a>
@@ -32,8 +32,8 @@ export default function Contact() {
           
           <div className="flex flex-col lg:items-end gap-8">
             <div className="flex gap-12 text-sm font-black uppercase tracking-widest">
-              <a href="https://www.instagram.com/saron__bogale/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors">Instagram</a>
-              <a href="https://www.linkedin.com/in/saron-bogale-9422b0200/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors">LinkedIn</a>
+              <a href="https://www.instagram.com/saron__bogale/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-coral transition-colors">Instagram</a>
+              <a href="https://www.linkedin.com/in/saron-bogale-9422b0200/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-coral transition-colors">LinkedIn</a>
             </div>
             
             <div className="text-left lg:text-right">

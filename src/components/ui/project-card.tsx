@@ -31,7 +31,7 @@ export default function ProjectCard({ title, year, category, imageSrc, descripti
       <div className="p-8">
         <div className="flex justify-between items-start mb-4">
           <div>
-            <span className="text-xs uppercase tracking-widest text-brand-orange font-bold">{category}</span>
+            <span className="text-xs uppercase tracking-widest text-brand-coral font-bold">{category}</span>
             <h3 className="text-2xl font-bold mt-1 leading-tight">{title}</h3>
           </div>
           <span className="text-sm font-medium opacity-40">{year}</span>
@@ -40,7 +40,7 @@ export default function ProjectCard({ title, year, category, imageSrc, descripti
           {description}
         </p>
         
-        <button className="text-sm font-bold border-b-2 border-brand-orange pb-1 transition-colors hover:text-brand-orange">
+        <button className="text-sm font-bold border-b-2 border-brand-coral pb-1 transition-colors hover:text-brand-coral">
           Explore Project
         </button>
       </div>

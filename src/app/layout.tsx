@@ -1,17 +1,30 @@
 import type { Metadata } from "next";
-import { Cabin, Mea_Culpa } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const cabin = Cabin({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+const cabin = localFont({
+  src: [
+    {
+      path: "../../public/Burbank Big Regular Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/Burbank Big Regular Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/Burbank Big Regular Medium.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
   variable: "--font-cabin",
 });
 
-const meaCulpa = Mea_Culpa({
-  weight: "400",
-  subsets: ["latin"],
+const meaCulpa = localFont({
+  src: "../../public/Brick.ttf",
   variable: "--font-mea-culpa",
 });
 

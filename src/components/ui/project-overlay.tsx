@@ -57,12 +57,12 @@ export default function ProjectOverlay({
         exit={{ y: '100%' }}
         transition={{ type: 'spring', damping: 28, stiffness: 220 }}
         className="relative w-full h-[95vh] rounded-t-3xl overflow-hidden flex flex-col"
-        style={{ backgroundColor: '#f3e8cc' }}
+        style={{ backgroundColor: '#F4F7FA' }}
       >
         {/* ── Header bar ── */}
         <div
           className="flex justify-between items-center px-8 py-5 md:px-12 md:py-6 shrink-0 border-b"
-          style={{ borderColor: 'rgba(13, 22, 23, 0.1)' }}
+          style={{ borderColor: 'rgba(6, 18, 28, 0.1)' }}
         >
           <div>
             <h2
@@ -72,13 +72,13 @@ export default function ProjectOverlay({
               {project.title}
             </h2>
             <div className="flex items-center gap-4 mt-2">
-              <span className="emphasis text-2xl" style={{ color: '#0d1617' }}>
+              <span className="emphasis text-2xl" style={{ color: '#06121C' }}>
                 {project.year}
               </span>
               {project.size && (
                 <span
                   className="text-xs font-bold uppercase tracking-widest"
-                  style={{ color: '#0d1617', opacity: 0.6 }}
+                  style={{ color: '#06121C', opacity: 0.6 }}
                 >
                   {project.size}
                 </span>
@@ -90,16 +90,16 @@ export default function ProjectOverlay({
             onClick={onClose}
             className="w-12 h-12 rounded-full flex items-center justify-center text-xl shrink-0 transition-colors duration-200 cursor-pointer"
             style={{
-              border: '2px solid #0d1617',
-              color: '#0d1617',
+              border: '2px solid #06121C',
+              color: '#06121C',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#0d1617';
-              e.currentTarget.style.color = '#f3e8cc';
+              e.currentTarget.style.backgroundColor = '#06121C';
+              e.currentTarget.style.color = '#F4F7FA';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.color = '#0d1617';
+              e.currentTarget.style.color = '#06121C';
             }}
           >
             ✕

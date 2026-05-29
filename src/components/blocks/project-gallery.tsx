@@ -7,72 +7,109 @@ import projectsData from '@/data/projects_map.json';
 import metadataOverrides from '@/data/metadata_overrides.json';
 import ProjectOverlay from '@/components/ui/project-overlay';
 
-const CATEGORY_CONFIG: any = [
-  { 
-    id: 'Cultural Institutions and Creative Hubs', 
-    label: 'Cultural & Hubs', 
-    color: '#18542a', 
-    textColor: '#f3e8cc',
-    titleColor: '#ffc928' // Yellow
+type ProjectEntry =
+  | string[]
+  | { folder: string; images: string[] };
+
+const CATEGORY_CONFIG = [
+  {
+    id: 'Cultural Institutions and Creative Hubs',
+    label: 'Cultural & Hubs',
+    color: '#0B3954',
+    textColor: '#F4F7FA',
+    titleColor: '#BFD7EA',
   },
-  { 
-    id: 'Commissions', 
-    label: 'Commissions', 
-    color: '#f96015', 
-    textColor: '#0d1617',
-    titleColor: '#ffc928' // Yellow
+  {
+    id: 'Street Art',
+    label: 'Street Art',
+    color: '#BFD7EA',
+    textColor: '#06121C',
+    titleColor: '#0B3954',
   },
-  { 
-    id: 'Skate Parks', 
-    label: 'Skate Parks', 
-    color: '#9abc05', 
-    textColor: '#0d1617',
-    titleColor: '#f3e8cc' // Neutral/Sand
+  {
+    id: 'Commissions',
+    label: 'Commissions',
+    color: '#087E8B',
+    textColor: '#06121C',
+    titleColor: '#F4F7FA',
   },
-  { 
-    id: 'Collaborations', 
-    label: 'Collabs', 
-    color: '#ffc928', 
-    textColor: '#0d1617',
-    titleColor: '#d52518' // Red
+  {
+    id: 'Exhibitions and Workshops',
+    label: 'Exhibitions & Workshops',
+    color: '#FF5A5F',
+    textColor: '#06121C',
+    titleColor: '#F4F7FA',
   },
-  { 
-    id: 'More', 
-    label: 'Archives', 
-    color: '#d52518', 
-    textColor: '#f3e8cc',
-    titleColor: '#ffc928' // Yellow
+  {
+    id: 'Digital Illustrations',
+    label: 'Digital Illustrations',
+    color: '#06121C',
+    textColor: '#BFD7EA',
+    titleColor: '#FF5A5F',
+  },
+  {
+    id: 'Set Design',
+    label: 'Set Design',
+    color: '#C81D25',
+    textColor: '#F4F7FA',
+    titleColor: '#BFD7EA',
+  },
+] as const;
+
+function resolveProjectEntry(
+  categoryId: string,
+  name: string,
+  entry: ProjectEntry,
+): { folder: string; images: string[] } {
+  if (Array.isArray(entry)) {
+    return { folder: categoryId, images: entry };
   }
-];
+  return { folder: entry.folder, images: entry.images };
+}
 
 export default function ProjectGallery() {
   const [activeTab, setActiveTab] = useState(CATEGORY_CONFIG[0]);
   const [selectedProject, setSelectedProject] = useState<any>(null);
 
-  const activeProjects = Object.entries((projectsData as any)[activeTab.id] || {}).map(([name, imgs]: any) => {
-    const override = (metadataOverrides as any)[name];
-    
-    if (override) {
-      return {
-        title: override.title,
-        year: override.year,
-        size: override.size,
-        collaborators: override.collab,
-        img: `/Projects/${activeTab.id}/${name}/${imgs[0]}`,
-        allImgs: imgs.map((i: string) => `/Projects/${activeTab.id}/${name}/${i}`)
-      };
-    }
+  const categoryProjects =
+  (projectsData as Record<string, Record<string, ProjectEntry>>)[activeTab.id] ??
+  {};
 
-    const parts = name.split('-');
-    return {
-      title: parts[0],
-      year: parts[1] || '2024',
-      size: parts[2] || 'Mural',
-      collaborators: parts[3] || '',
-      img: `/Projects/${activeTab.id}/${name}/${imgs[0]}`,
-      allImgs: imgs.map((i: string) => `/Projects/${activeTab.id}/${name}/${i}`)
-    };
-  });
+  const activeProjects = Object.entries(categoryProjects).map(
+    ([name, entry]) => {
+      const { folder, images: imgs } = resolveProjectEntry(
+        activeTab.id,
+        name,
+        entry,
+      );
+      const basePath = `/Projects/${folder}/${name}`;
+      const override = (metadataOverrides as Record<
+        string,
+        { title: string; year: string; size: string; collab: string }
+      >)[name];
+
+      if (override) {
+        return {
+          title: override.title,
+          year: override.year,
+          size: override.size,
+          collaborators: override.collab,
+          img: `${basePath}/${imgs[0]}`,
+          allImgs: imgs.map((i) => `${basePath}/${i}`),
+        };
+      }
+
+      const parts = name.split('-');
+      return {
+        title: parts[0],
+        year: parts[1] || '2024',
+        size: parts[2] || 'Mural',
+        collaborators: parts[3] || '',
+        img: `${basePath}/${imgs[0]}`,
+        allImgs: imgs.map((i) => `${basePath}/${i}`),
+      };
+    },
+  );
 
   return (
     <section className="bg-brand-obsidian pt-24 pb-0 overflow-hidden">
@@ -84,7 +121,7 @@ export default function ProjectGallery() {
         </div>
 
         <div className="flex overflow-x-auto no-scrollbar items-end relative z-10 px-6 md:px-10 -mb-[1px]">
-          {CATEGORY_CONFIG.map((cat: any) => (
+          {CATEGORY_CONFIG.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat)}
@@ -126,7 +163,15 @@ export default function ProjectGallery() {
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12"
               >
-                {activeProjects.map((project: any, idx: number) => (
+                {activeProjects.length === 0 && (
+                  <p
+                    className="col-span-full text-sm font-medium uppercase tracking-widest opacity-60 md:text-base"
+                    style={{ color: activeTab.textColor }}
+                  >
+                    Projects coming soon
+                  </p>
+                )}
+                {activeProjects.map((project, idx) => (
                   <div 
                     key={idx} 
                     className="flex flex-col cursor-pointer group"

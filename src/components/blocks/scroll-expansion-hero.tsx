@@ -301,7 +301,7 @@ const ScrollExpandMedia = ({
                       className='text-xl font-medium'
                       style={{
                         transform: `translateX(-${textTranslateX}vw)`,
-                        color: '#f3e8cc'
+                        color: '#BFD7EA'
                       }}
                     >
                       {date}
@@ -315,13 +315,13 @@ const ScrollExpandMedia = ({
                   }`}
               >
                 <motion.h2
-                  className='text-[16vw] sm:text-6xl md:text-7xl lg:text-8xl font-black text-brand-yellow tracking-tighter transition-none leading-[0.8]'
+                  className='text-[16vw] sm:text-6xl md:text-7xl lg:text-8xl font-black text-brand-pale-sky tracking-tighter transition-none leading-[0.8]'
                   style={{ transform: `translateX(-${textTranslateX}vw)` }}
                 >
                   {firstWord}
                 </motion.h2>
                 <motion.h2
-                  className='text-[16vw] sm:text-6xl md:text-7xl lg:text-8xl font-normal emphasis text-center text-brand-yellow tracking-normal transition-none leading-[0.8]'
+                  className='text-[16vw] sm:text-6xl md:text-7xl lg:text-8xl font-normal emphasis text-center text-brand-pale-sky tracking-normal transition-none leading-[0.8]'
                   style={{ transform: `translateX(${textTranslateX}vw)` }}
                 >
                   {restOfTitle}

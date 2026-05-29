@@ -1,28 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f3e8cc;
-  --foreground: #0d1617;
-  
-  --brand-obsidian: #0d1617;
-  --brand-green: #18542a;
-  --brand-yellow: #ffc928;
-  --brand-red: #d52518;
-  --brand-orange: #f96015;
-  --brand-leaf: #9abc05;
+  --background: #F4F7FA;
+  --foreground: #06121C;
+
+  --brand-obsidian: #06121C;
+  --brand-deep-space-blue: #0B3954;
+  --brand-teal: #087E8B;
+  --brand-pale-sky: #BFD7EA;
+  --brand-coral: #FF5A5F;
+  --brand-red: #C81D25;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-brand-obsidian: var(--brand-obsidian);
-  --color-brand-green: var(--brand-green);
-  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-deep-space-blue: var(--brand-deep-space-blue);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-pale-sky: var(--brand-pale-sky);
+  --color-brand-coral: var(--brand-coral);
   --color-brand-red: var(--brand-red);
-  --color-brand-orange: var(--brand-orange);
-  --color-brand-leaf: var(--brand-leaf);
   --color-brand-sand: var(--background);
-  
+
   --font-brand: var(--font-cabin), sans-serif;
   --font-emphasis: var(--font-mea-culpa), cursive;
 }
@@ -36,5 +36,15 @@ body {
 
 .emphasis {
   font-family: var(--font-emphasis);
+  font-weight: 400;
+}
+
+span.emphasis {
+  font-size: 1.2em;
+}
+
+.loader-letter {
+  font-family: var(--font-mea-culpa), serif;
+  font-size: 132px;
   font-weight: 400;
 }

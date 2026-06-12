@@ -56,7 +56,7 @@ const ScrollExpandMedia = ({
         e.preventDefault();
       } else if (!mediaFullyExpanded) {
         e.preventDefault();
-        const scrollDelta = (e as any).deltaY * 0.0009;
+        const scrollDelta = (e as any).deltaY * 0.003;
         const newProgress = Math.min(
           Math.max(scrollProgress + scrollDelta, 0),
           1
@@ -88,7 +88,7 @@ const ScrollExpandMedia = ({
       } else if (!mediaFullyExpanded) {
         e.preventDefault();
         // Increase sensitivity for mobile, especially when scrolling back
-        const scrollFactor = deltaY < 0 ? 0.012 : 0.008;
+        const scrollFactor = deltaY < 0 ? 0.035 : 0.025;
         const scrollDelta = deltaY * scrollFactor;
         const newProgress = Math.min(
           Math.max(scrollProgress + scrollDelta, 0),
@@ -165,15 +165,15 @@ const ScrollExpandMedia = ({
   }, []);
 
   const mediaWidthVw = isMobileState
-    ? 65 + scrollProgress * 30   // 65vw → 95vw on mobile
+    ? 65 + scrollProgress * 35   // 65vw → 100vw on mobile
     : isTabletState
-    ? 35 + scrollProgress * 60   // 35vw → 95vw on tablet
-    : 20 + scrollProgress * 75;  // 20vw → 95vw on desktop
+      ? 35 + scrollProgress * 65   // 35vw → 100vw on tablet
+      : 20 + scrollProgress * 80;  // 20vw → 100vw on desktop
   const mediaHeightVh = isMobileState
-    ? 50 + scrollProgress * 35   // 50vh → 85vh on mobile
+    ? 50 + scrollProgress * 50   // 50vh → 100vh on mobile
     : isTabletState
-    ? 45 + scrollProgress * 40   // 45vh → 85vh on tablet
-    : 50 + scrollProgress * 40;  // 50vh → 90vh on desktop
+      ? 45 + scrollProgress * 55   // 45vh → 100vh on tablet
+      : 50 + scrollProgress * 50;  // 50vh → 100vh on desktop
   const textTranslateX = scrollProgress * (isMobileState ? 120 : isTabletState ? 130 : 150);
 
   const firstWord = title ? title.split(' ')[0] : '';
@@ -208,12 +208,13 @@ const ScrollExpandMedia = ({
           <div className='container mx-auto flex flex-col items-center justify-start relative z-10'>
             <div className='flex flex-col items-center justify-center w-full h-[100dvh] relative'>
               <div
-                className='absolute z-0 top-1/2 left-1/2 transition-none rounded-2xl'
+                className='absolute z-0 top-1/2 left-1/2 transition-none'
                 style={{
                   width: `${mediaWidthVw}vw`,
                   height: `${mediaHeightVh}vh`,
                   transform: 'translate(-50%, -50%)',
-                  boxShadow: '0px 0px 50px rgba(0, 0, 0, 0.3)',
+                  boxShadow: scrollProgress < 1 ? '0px 0px 50px rgba(0, 0, 0, 0.3)' : 'none',
+                  borderRadius: `${(1 - scrollProgress) * 16}px`,
                   willChange: 'width, height',
                   contain: 'layout style',
                 }}
@@ -243,9 +244,9 @@ const ScrollExpandMedia = ({
                       ></div>
 
                       <motion.div
-                        className='absolute inset-0 bg-black/30 rounded-xl'
-                        initial={{ opacity: 0.7 }}
-                        animate={{ opacity: 0.5 - scrollProgress * 0.3 }}
+                        className='absolute inset-0 bg-black rounded-xl'
+                        initial={{ opacity: 0.4 }}
+                        animate={{ opacity: 0.4 - scrollProgress * 0.4 }}
                         transition={{ duration: 0.2 }}
                       />
                     </div>
@@ -267,9 +268,9 @@ const ScrollExpandMedia = ({
                       ></div>
 
                       <motion.div
-                        className='absolute inset-0 bg-black/30 rounded-xl'
-                        initial={{ opacity: 0.7 }}
-                        animate={{ opacity: 0.5 - scrollProgress * 0.3 }}
+                        className='absolute inset-0 bg-black rounded-xl'
+                        initial={{ opacity: 0.4 }}
+                        animate={{ opacity: 0.4 - scrollProgress * 0.4 }}
                         transition={{ duration: 0.2 }}
                       />
                     </div>
@@ -287,9 +288,9 @@ const ScrollExpandMedia = ({
                     />
 
                     <motion.div
-                      className='absolute inset-0 bg-black/50 rounded-xl'
-                      initial={{ opacity: 0.7 }}
-                      animate={{ opacity: 0.7 - scrollProgress * 0.3 }}
+                      className='absolute inset-0 bg-black rounded-xl'
+                      initial={{ opacity: 0.4 }}
+                      animate={{ opacity: 0.4 - scrollProgress * 0.4 }}
                       transition={{ duration: 0.2 }}
                     />
                   </div>
@@ -308,6 +309,19 @@ const ScrollExpandMedia = ({
                     </p>
                   )}
                 </div>
+
+                {/* Bio Overlay - Positioned on the right, hidden on mobile */}
+                <motion.div
+                  className='absolute inset-0 hidden md:flex items-center justify-end z-20 overflow-y-auto p-6 md:p-16 lg:p-24'
+                  initial={{ opacity: 0, pointerEvents: 'none' }}
+                  animate={{
+                    opacity: showContent ? 1 : 0,
+                    pointerEvents: showContent ? 'auto' : 'none'
+                  }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {children}
+                </motion.div>
               </div>
 
               <div
@@ -315,28 +329,19 @@ const ScrollExpandMedia = ({
                   }`}
               >
                 <motion.h2
-                  className='text-[16vw] sm:text-6xl md:text-7xl lg:text-8xl font-black text-brand-pale-sky tracking-tighter transition-none leading-[0.8]'
+                  className='text-[24vw] sm:text-8xl md:text-9xl lg:text-[9rem] font-normal emphasis text-brand-pale-sky tracking-normal transition-none leading-[0.8]'
                   style={{ transform: `translateX(-${textTranslateX}vw)` }}
                 >
                   {firstWord}
                 </motion.h2>
                 <motion.h2
-                  className='text-[16vw] sm:text-6xl md:text-7xl lg:text-8xl font-normal emphasis text-center text-brand-pale-sky tracking-normal transition-none leading-[0.8]'
+                  className='text-[16vw] sm:text-6xl md:text-7xl lg:text-8xl font-black text-center text-brand-pale-sky tracking-tighter transition-none leading-[0.8]'
                   style={{ transform: `translateX(${textTranslateX}vw)` }}
                 >
                   {restOfTitle}
                 </motion.h2>
               </div>
             </div>
-
-            <motion.section
-              className='flex flex-col w-full px-8 py-10 md:px-16 lg:py-20 mt-4 md:mt-0'
-              initial={{ opacity: 0 }}
-              animate={{ opacity: showContent ? 1 : 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              {children}
-            </motion.section>
           </div>
         </div>
       </section>

@@ -7,6 +7,8 @@ import ProjectCard from '@/components/ui/project-card';
 import ProjectGallery from '@/components/blocks/project-gallery';
 import ScrollOpacityText from '@/components/ui/scroll-opacity-text';
 import Contact from '@/components/blocks/contact';
+import Collaborators from '@/components/blocks/collaborators';
+import Featured from '@/components/blocks/featured';
 import { motion } from 'framer-motion';
 
 export default function Home() {
@@ -21,7 +23,6 @@ export default function Home() {
         animate={{ opacity: loadingComplete ? 1 : 0 }}
         transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
       >
-        {/* Hero Section */}
         <ScrollExpandMedia
           mediaType="image"
           mediaSrc="/WOW09594.webp"
@@ -31,14 +32,21 @@ export default function Home() {
           scrollToExpand="Scroll to explore"
           textBlend
         >
-          <div className="w-full bg-brand-sand">
-            <ScrollOpacityText
-              title="I am Saron Bogale"
-              className="text-lg sm:text-2xl md:text-5xl lg:text-5xl font-normal leading-[1.1] tracking-normal"
-              text="An architect, muralist and set designer based in Addis Ababa Ethiopia, with over seven years of experience in mural art. My work focuses on transforming spaces and engaging communities through public art, murals, and creative projects. I am also the founder of JONIYA Studio, where we teach art to kids and host art-related events. I often collaborate with cultural spaces and creative hubs; my practice involves developing concepts, working on-site, and engaging closely with teams and communities."
-            />
-          </div>
+          <ScrollOpacityText
+            title="I am Saron Bogale"
+            className="text-sm sm:text-base md:text-lg lg:text-xl font-normal leading-relaxed tracking-normal"
+            text="An architect, muralist and set designer based in Addis Ababa Ethiopia, with over seven years of experience in mural art. My work focuses on transforming spaces and engaging communities through public art, murals, and creative projects. I am also the founder of JONIYA Studio, where we teach art to kids and host art-related events. I often collaborate with cultural spaces and creative hubs; my practice involves developing concepts, working on-site, and engaging closely with teams and communities."
+          />
         </ScrollExpandMedia>
+
+        {/* Mobile Bio Section - shown only on mobile */}
+        <div className="block md:hidden w-full bg-brand-sand">
+          <ScrollOpacityText
+            title="I am Saron Bogale"
+            className="text-base font-normal leading-relaxed tracking-normal"
+            text="An architect, muralist and set designer based in Addis Ababa Ethiopia, with over seven years of experience in mural art. My work focuses on transforming spaces and engaging communities through public art, murals, and creative projects. I am also the founder of JONIYA Studio, where we teach art to kids and host art-related events. I often collaborate with cultural spaces and creative hubs; my practice involves developing concepts, working on-site, and engaging closely with teams and communities."
+          />
+        </div>
 
         {/* Project Vault (Tabs) */}
         <ProjectGallery />
@@ -89,6 +97,12 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Collaborators Carousel */}
+        <Collaborators />
+
+        {/* Press & Media Features */}
+        <Featured />
 
         {/* Contact & Footer Section */}
         <Contact />

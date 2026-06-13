@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 interface ProjectOverlayProps {
@@ -23,8 +23,11 @@ export default function ProjectOverlay({
   titleColor,
   onClose,
 }: ProjectOverlayProps) {
-  // Lock body scroll + listen for ESC
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Lock body scroll + ESC key + redirect vertical wheel → horizontal scroll
   useEffect(() => {
+    const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
     const onKey = (e: KeyboardEvent) => {
@@ -32,9 +35,26 @@ export default function ProjectOverlay({
     };
     window.addEventListener('keydown', onKey);
 
+    // Redirect vertical scroll to horizontal inside the gallery
+    const container = scrollContainerRef.current;
+    const onWheel = (e: WheelEvent) => {
+      if (!container) return;
+      // Prevent any vertical scrolling on the page
+      e.preventDefault();
+      // Apply both deltaX and deltaY as horizontal scroll
+      container.scrollLeft += e.deltaY + e.deltaX;
+    };
+
+    if (container) {
+      container.addEventListener('wheel', onWheel, { passive: false });
+    }
+
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = prevOverflow;
       window.removeEventListener('keydown', onKey);
+      if (container) {
+        container.removeEventListener('wheel', onWheel);
+      }
     };
   }, [onClose]);
 
@@ -50,13 +70,13 @@ export default function ProjectOverlay({
         onClick={onClose}
       />
 
-      {/* Panel — swoops up from bottom, 5vh gap at top */}
+      {/* Panel — swoops up from bottom */}
       <motion.div
         initial={{ y: '100%' }}
         animate={{ y: 0 }}
         exit={{ y: '100%' }}
         transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-        className="relative w-full h-[95vh] rounded-t-3xl overflow-hidden flex flex-col"
+        className="relative w-full h-[95vh] overflow-hidden flex flex-col"
         style={{ backgroundColor: '#F4F7FA' }}
       >
         {/* ── Header bar ── */}
@@ -106,34 +126,24 @@ export default function ProjectOverlay({
           </button>
         </div>
 
-        {/* ── Bento Grid Image Gallery ── */}
-        <div className="flex-1 overflow-y-auto px-4 py-8 md:px-12 md:py-16 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          <div className="max-w-[1600px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-[250px] md:auto-rows-[350px]">
-            {project.allImgs.map((src, i) => {
-              // Bento Box cyclical layout logic
-              let spanClasses = 'col-span-1 row-span-1';
-              const pattern = i % 7;
-              
-              if (pattern === 0) spanClasses = 'sm:col-span-2 sm:row-span-2';
-              else if (pattern === 1) spanClasses = 'sm:col-span-2 lg:col-span-2 row-span-1';
-              else if (pattern === 2) spanClasses = 'col-span-1 sm:row-span-2';
-              else if (pattern === 4) spanClasses = 'sm:col-span-2 lg:col-span-2 row-span-1';
-              else if (pattern === 6) spanClasses = 'sm:col-span-3 lg:col-span-2 row-span-1';
-
-              return (
-                <div 
-                  key={i} 
-                  className={`relative overflow-hidden rounded-2xl ${spanClasses}`}
-                  style={{ boxShadow: '0 10px 40px rgba(0,0,0,0.1)' }}
-                >
-                  <img
-                    src={src}
-                    alt={`${project.title} — ${i + 1}`}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                </div>
-              );
-            })}
+        {/* ── Horizontal Filmstrip Gallery ── */}
+        <div
+          ref={scrollContainerRef}
+          className="flex-1 overflow-x-auto overflow-y-hidden no-scrollbar"
+        >
+          <div className="flex items-center gap-4 md:gap-6 h-full px-8 md:px-12 py-8">
+            {project.allImgs.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt={`${project.title} — ${i + 1}`}
+                className="h-full w-auto max-h-full object-contain flex-shrink-0"
+                style={{ boxShadow: '0 10px 40px rgba(0,0,0,0.08)' }}
+                draggable={false}
+              />
+            ))}
+            {/* Spacer at the end for visual breathing room */}
+            <div className="w-8 md:w-12 flex-shrink-0" />
           </div>
         </div>
       </motion.div>

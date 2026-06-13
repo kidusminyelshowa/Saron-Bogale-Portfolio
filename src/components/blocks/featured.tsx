@@ -6,46 +6,47 @@ import Image from 'next/image';
 
 const FEATURES = [
   {
-    publication: 'Addis Standard',
-    headline: 'Art in Public Spaces: Transforming Addis Ababa’s Canvas',
-    date: 'Oct 2024',
-    category: 'Interview',
-    image: '/4E2A0093.webp',
-    link: '#'
-  },
-  {
-    publication: 'LinkUp Addis',
-    headline: 'Muralism and Architectonics: The Vision of Saron Bogale',
-    date: 'Jul 2024',
+    publication: 'ALX Ethiopia',
+    headline: 'ሴት እኮናት Campaign: Saron Bogale on Transforming Public Spaces through Murals and Community Art',
+    date: 'Mar 2026',
     category: 'Feature',
-    image: '/Projects/Cultural Institutions and Creative Hubs/Lycee Guebre-Mariam school-2024-2x4(2)/IMG_7830.webp',
-    link: '#'
+    image: '/Features/1772930200606.jpg',
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7436289656192753664/'
   },
   {
-    publication: 'The Reporter',
-    headline: 'Bridging Public Art and Built Environments in Ethiopia',
-    date: 'Feb 2024',
-    category: 'Newspaper',
-    image: '/WOW09594.webp',
-    link: '#'
+    publication: 'Merha Magazine',
+    headline: 'The Hands of Art: Celebrating Visionaries and Changemakers Inspiring Community Growth',
+    date: 'Feb 2026',
+    category: 'Magazine',
+    image: '/Features/1771432998872.jpg',
+    link: 'https://www.linkedin.com/posts/saron-bogale-9422b0200_its-an-honor-to-be-featured-by-merha-magazine-activity-7429928559755902976-9uQf'
   },
   {
-    publication: 'Design Indaba',
-    headline: 'A New Wave of Contemporary African Mural Art',
-    date: 'Dec 2023',
-    category: 'Review',
-    image: '/Projects/Cultural Institutions and Creative Hubs/Lycee Guebre-Mariam school-2024-2x4(2)/IMG_8255.webp',
-    link: '#'
+    publication: 'Andariya',
+    headline: 'Women Transforming Urban Spaces: Reshaping Capitals through Art and Creative Sound',
+    date: 'Dec 2025',
+    category: 'Video Feature',
+    image: '/Features/maxresdefault.jpg',
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7407774246149447680/'
   },
   {
-    publication: 'Le Point',
-    headline: 'La nouvelle garde artistique et architecturale d’Addis',
-    date: 'Sep 2023',
-    category: 'International Press',
-    image: '/Projects/Cultural Institutions and Creative Hubs/Lycee Guebre-Mariam school-2024-2x4(2)/IMG_8297.webp',
-    link: '#'
+    publication: 'Plan Libre',
+    headline: "Quand l'architecture rencontre l'art: L'intégration d'une fresque street art au Lycée Guebre-Mariam",
+    date: 'Jun 2025',
+    category: 'Architecture',
+    image: '/Projects/Cultural Institutions and Creative Hubs/Lycee Guebre-Mariam school-2024-2x4m/IMG_8360.webp',
+    link: 'https://www.linkedin.com/posts/plan-libre_quand-larchitecture-rencontre-lart-ugcPost-7340732667178450944-5doX'
+  },
+  {
+    publication: 'Excel Digital',
+    headline: 'Shoutout to the Creators: Saron Bogale turning Everyday Spaces into Inspiring Works of Art',
+    date: 'Apr 2025',
+    category: 'Creative Shoutout',
+    image: '/Features/Screenshot 2026-06-13 083718.png',
+    link: 'https://www.linkedin.com/posts/excel-digital-marketing-and-events_shoutout-to-the-creators-ugcPost-7322312968589766656-f7V0'
   }
 ];
+
 
 export default function Featured() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -54,10 +55,10 @@ export default function Featured() {
     if (scrollRef.current) {
       const { scrollLeft, clientWidth } = scrollRef.current;
       const cardWidth = clientWidth / (window.innerWidth >= 768 ? 3 : 1);
-      const scrollToValue = direction === 'left' 
-        ? scrollLeft - cardWidth 
+      const scrollToValue = direction === 'left'
+        ? scrollLeft - cardWidth
         : scrollLeft + cardWidth;
-      
+
       scrollRef.current.scrollTo({
         left: scrollToValue,
         behavior: 'smooth'
@@ -68,11 +69,10 @@ export default function Featured() {
   return (
     <section className="bg-brand-sand py-20 md:py-32 border-t border-brand-obsidian/5 text-brand-obsidian overflow-hidden">
       <div className="max-w-[1700px] mx-auto px-6 md:px-24">
-        
+
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
           <div>
-            <h2 className="text-sm font-black uppercase tracking-[0.2em] opacity-40 mb-3">Press & Media</h2>
             <p className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight">
               Featured <span className="emphasis font-normal text-brand-coral">In</span>
             </p>
@@ -102,20 +102,14 @@ export default function Featured() {
         </div>
 
         {/* Horizontal Scroll Carousel */}
-        <div 
+        <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-8"
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-8 no-scrollbar"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
           }}
         >
-          {/* Custom style helper for webkit scrollbars */}
-          <style jsx global>{`
-            .flex.overflow-x-auto::-webkit-scrollbar {
-              display: none;
-            }
-          `}</style>
 
           {FEATURES.map((item, index) => (
             <motion.div
@@ -128,7 +122,7 @@ export default function Featured() {
             >
               <a href={item.link} className="block space-y-4">
                 {/* Image Container with Hover Effects */}
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-brand-obsidian/5 shadow-md">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-obsidian/5 shadow-md">
                   <Image
                     src={item.image}
                     alt={`${item.publication} cover`}

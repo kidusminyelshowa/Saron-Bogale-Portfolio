@@ -84,14 +84,14 @@ export default function Home() {
               </div>
 
               <div className="relative aspect-[4/5] w-full max-w-2xl ml-auto">
-                <div className="absolute inset-0 bg-brand-coral -rotate-2 rounded-2xl opacity-10"></div>
+                <div className="absolute inset-0 bg-brand-coral -rotate-2 opacity-10"></div>
                 <Image
                   src="/4E2A0093.webp"
                   alt="Saron Bogale at work"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   style={{ objectPosition: 'center center' }}
-                  className="rounded-2xl shadow-2xl relative z-10 object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  className="shadow-2xl relative z-10 object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </div>
             </div>

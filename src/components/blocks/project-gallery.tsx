@@ -20,7 +20,7 @@ const CATEGORY_CONFIG = [
     titleColor: '#BFD7EA',
   },
   {
-    id: 'Street Art',
+    id: 'Steet Art',
     label: 'Street Art',
     color: '#BFD7EA',
     textColor: '#06121C',
@@ -34,7 +34,7 @@ const CATEGORY_CONFIG = [
     titleColor: '#F4F7FA',
   },
   {
-    id: 'Exhibitions and Workshops',
+    id: 'Exhibition & Workshops',
     label: 'Exhibitions & Workshops',
     color: '#FF5A5F',
     textColor: '#06121C',
@@ -56,27 +56,68 @@ const CATEGORY_CONFIG = [
   },
 ] as const;
 
+const FEATURED_IMAGE_MAP: Record<string, string> = {
+  'Chewata Awaqi-Alliance Ethio-francaise Compound-2025-5x2m': 'IMG_2031.webp',
+  'INSA-National ID-2025-320m2': 'IMG_7655.webp',
+  'Italian Cultural Institute-2021-ASA-2.5x6m': 'IMG_8055.webp',
+  'Lycee Guebre-Mariam school-2024-2x4m': 'IMG_8360.webp',
+  'Timbuktoo Africa-UNDP-2025': 'IMG_2719.webp',
+  'Bella skate part-Corridor Project-2026-190m2': 'IMG_7808.webp',
+  'Ethiopian skatepark -Corridor Project-2025-430m2': 'IMG_6368.webp',
+  'Setaweet-Around Estifanos-2021': 'IMG_7923.webp',
+  'Eu delegation to Au -ASA-2021-Moh Awudu': 'IMG_2223.webp',
+  'Dembel Area-2025-Munir de Vries': 'IMG_2506.webp',
+  'Dante-Italian cultural institute-ASA-2021': 'IMG_2221.webp',
+  'Sarbet Corridor Project-2025': 'IMG_7428.webp',
+  'Layers of memory-2025-Ephrata Birhanu': 'IMG_2792.webp',
+  'Sheraton-2026': 'IMG_1179.webp',
+  'Savor-2024': 'IMG_1214.webp',
+  '--': 'IMG_5608.webp',
+  'Dembel-2025': 'photo_2026-06-12_11-48-16.webp',
+  'Fabrica-2025': 'IMG_1472.webp',
+  'Sosha-2025-2.2x3.5m': 'IMG_0988.webp',
+  'Youthopians-2026': 'IMG_1005.webp',
+  'Qine Films-2021': 'photo_2026-06-12_11-49-19.webp',
+  'Signature Residence-2025': 'IMG_2336.webp',
+  '-': 'IMG_9373.webp',
+  'Nokia-2025': 'IMG_4243.webp',
+  'Daye Bensa-Dukamo Coffee-2025-10x4.8': 'IMG_0023.webp',
+  'Amharic Graffiti-Exhibition': 'IMG_0377.webp',
+  'Layers of Memory-Exhibition': 'IMG_0788.webp'
+};
+
 function resolveProjectEntry(
   categoryId: string,
   name: string,
   entry: ProjectEntry,
 ): { folder: string; images: string[] } {
-  if (Array.isArray(entry)) {
-    return { folder: categoryId, images: entry };
+  const resolved = Array.isArray(entry)
+    ? { folder: categoryId, images: [...entry] }
+    : { folder: entry.folder, images: [...entry.images] };
+
+  // Sort specified featured image to index 0 if it exists
+  const featuredImg = FEATURED_IMAGE_MAP[name];
+  if (featuredImg && resolved.images.includes(featuredImg)) {
+    resolved.images = [
+      featuredImg,
+      ...resolved.images.filter((img) => img !== featuredImg)
+    ];
   }
-  return { folder: entry.folder, images: entry.images };
+  
+  return resolved;
 }
 
 export default function ProjectGallery() {
   const [activeTab, setActiveTab] = useState<(typeof CATEGORY_CONFIG)[number]>(CATEGORY_CONFIG[0]);
   const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [commissionsSubFilter, setCommissionsSubFilter] = useState<'general' | 'restaurants'>('general');
 
   const categoryProjects =
-  (projectsData as Record<string, Record<string, ProjectEntry>>)[activeTab.id] ??
-  {};
+    (projectsData as Record<string, Record<string, ProjectEntry>>)[activeTab.id] ??
+    {};
 
-  const activeProjects = Object.entries(categoryProjects).map(
-    ([name, entry]) => {
+  const activeProjects = Object.entries(categoryProjects)
+    .map(([name, entry]) => {
       const { folder, images: imgs } = resolveProjectEntry(
         activeTab.id,
         name,
@@ -96,6 +137,32 @@ export default function ProjectGallery() {
           collaborators: override.collab,
           img: `${basePath}/${imgs[0]}`,
           allImgs: imgs.map((i) => `${basePath}/${i}`),
+          isRestaurant: folder.includes('Restaurants')
+        };
+      }
+
+      // Metadata overrides for special folders "-" and "--"
+      if (name === '-') {
+        return {
+          title: 'Commission',
+          year: '2025',
+          size: 'Mural',
+          collaborators: '',
+          img: `${basePath}/${imgs[0]}`,
+          allImgs: imgs.map((i) => `${basePath}/${i}`),
+          isRestaurant: false
+        };
+      }
+
+      if (name === '--') {
+        return {
+          title: 'Restaurant Commission',
+          year: '2025',
+          size: 'Mural',
+          collaborators: '',
+          img: `${basePath}/${imgs[0]}`,
+          allImgs: imgs.map((i) => `${basePath}/${i}`),
+          isRestaurant: true
         };
       }
 
@@ -107,9 +174,15 @@ export default function ProjectGallery() {
         collaborators: parts[3] || '',
         img: `${basePath}/${imgs[0]}`,
         allImgs: imgs.map((i) => `${basePath}/${i}`),
+        isRestaurant: folder.includes('Restaurants')
       };
-    },
-  );
+    })
+    .filter(project => {
+      if (activeTab.id !== 'Commissions') return true;
+      if (commissionsSubFilter === 'general') return !project.isRestaurant;
+      if (commissionsSubFilter === 'restaurants') return project.isRestaurant;
+      return true;
+    });
 
   return (
     <section className="bg-brand-obsidian pt-24 pb-0 overflow-hidden">
@@ -124,7 +197,10 @@ export default function ProjectGallery() {
           {CATEGORY_CONFIG.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setActiveTab(cat)}
+              onClick={() => {
+                setActiveTab(cat);
+                setCommissionsSubFilter('general');
+              }}
               className={`relative flex-shrink-0 px-6 py-2 md:px-12 md:py-4 transition-all duration-300 group cursor-pointer whitespace-nowrap ${
                 activeTab.id === cat.id ? 'z-40' : 'text-white/40 hover:text-white z-0'
               }`}
@@ -153,10 +229,32 @@ export default function ProjectGallery() {
             backgroundColor: activeTab.color
           }}
         >
+          {/* Sub-filtering buttons for Commissions tab */}
+          {activeTab.id === 'Commissions' && (
+            <div className="flex justify-center gap-4 pt-8 md:pt-12 px-6">
+              {[
+                { id: 'general', label: 'General' },
+                { id: 'restaurants', label: 'Restaurants' },
+              ].map((sub) => (
+                <button
+                  key={sub.id}
+                  onClick={() => setCommissionsSubFilter(sub.id as any)}
+                  className={`px-6 py-2 text-xs font-bold tracking-wider uppercase transition-all duration-300 ${
+                    commissionsSubFilter === sub.id
+                      ? 'bg-brand-obsidian text-white shadow-lg scale-105'
+                      : 'bg-white/10 text-brand-obsidian hover:bg-white/20'
+                  }`}
+                >
+                  {sub.label}
+                </button>
+              ))}
+            </div>
+          )}
+
           <div className="p-8 md:p-24">
             <AnimatePresence mode="wait">
               <motion.div
-                key={activeTab.id}
+                key={`${activeTab.id}-${commissionsSubFilter}`}
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
@@ -177,7 +275,7 @@ export default function ProjectGallery() {
                     className="flex flex-col cursor-pointer group"
                     onClick={() => setSelectedProject(project)}
                   >
-                    <div className="aspect-[4/5] relative overflow-hidden rounded-xl shadow-2xl mb-4 border border-white/5 bg-brand-obsidian/10">
+                    <div className="aspect-[4/5] relative overflow-hidden shadow-2xl mb-4 border border-white/5 bg-brand-obsidian/10">
                        <Image 
                          src={project.img} 
                          alt={project.title}
@@ -191,14 +289,14 @@ export default function ProjectGallery() {
                           <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 z-20">
                             {/* Extra count shown above the grid */}
                             {project.allImgs.length > 5 && (
-                              <div className="absolute -top-10 right-0 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/20 shadow-xl">
+                              <div className="absolute -top-10 right-0 bg-white/10 backdrop-blur-md px-3 py-1 text-white border border-white/20 shadow-xl">
                                 <span className="text-[10px] font-black italic">+{project.allImgs.length - 5} MORE</span>
                               </div>
                             )}
                             
                             <div className="grid grid-cols-4 gap-2">
                               {project.allImgs.slice(1, 5).map((img: string, i: number) => (
-                                <div key={i} className="aspect-square relative rounded-lg overflow-hidden border border-white/20 shadow-lg">
+                                <div key={i} className="aspect-square relative overflow-hidden border border-white/20 shadow-lg">
                                   <Image 
                                     src={img}
                                     alt={`${project.title} gallery ${i}`}

@@ -1,142 +1,298 @@
 {
-  "Cultural Institutions and Creative Hubs": {
-    "INSA-National ID-2025-320m2": [
-      "IMG_7652.webp",
-      "IMG_7655.webp",
-      "IMG_7658.webp",
-      "IMG_7663.webp"
-    ],
-    "Lycee Guebre-Mariam school-2024-2x4(2)": [
-      "IMG_7830.webp",
-      "IMG_8255.webp",
-      "IMG_8297.webp",
-      "IMG_8337.webp",
-      "IMG_8360.webp"
-    ],
-    "Timbuktoo Africa-UNDP-2025": [
-      "IMG_2685.webp",
-      "IMG_2706.webp",
-      "IMG_2711.webp",
-      "IMG_2719.webp"
-    ]
-  },
-  "Street Art": {
-    "Bella skate part-Corridor Project-2026-190m2": {
-      "folder": "Skate Parks",
-      "images": [
-        "IMG_7808.webp",
-        "IMG_7809.webp",
-        "IMG_7811.webp",
-        "IMG_7814.webp",
-        "IMG_7818.webp"
-      ]
-    },
-    "Ethiopian skatepark -Corridor Project-2025-430m2": {
-      "folder": "Skate Parks",
-      "images": [
-        "IMG_6368.webp",
-        "IMG_6369.webp",
-        "IMG_6373.webp",
-        "IMG_6386.webp",
-        "IMG_6408.webp"
-      ]
-    },
-    "Dembel Area-2025-Munir de Vries": {
-      "folder": "Collaborations",
-      "images": [
-        "IMG_2506.webp",
-        "IMG_2510.webp",
-        "IMG_5097.webp",
-        "IMG_5701.webp"
-      ]
-    },
-    "Eu delegation to Au -ASA-2021-Moh Awudu": {
-      "folder": "Collaborations",
-      "images": [
-        "IMG_2222.webp",
-        "IMG_2223.webp"
-      ]
-    },
-    "Layers of memory-2025-Ephrata Birhanu": {
-      "folder": "Collaborations",
-      "images": [
-        "IMG_2792.webp"
-      ]
-    }
-  },
   "Commissions": {
+    "-": [
+      "IMG_9373.webp",
+      "IMG_9478.webp",
+      "IMG_9479.webp",
+      "IMG_9481.webp"
+    ],
     "Daye Bensa-Dukamo Coffee-2025-10x4.8": [
       "IMG_0007.webp",
       "IMG_0019.webp",
       "IMG_0023.webp",
+      "IMG_9414.webp",
       "IMG_9976.webp"
     ],
-    "Fabrica-2025": [
-      "IMG_1470.webp",
-      "IMG_1472.webp",
-      "IMG_1475.webp"
-    ],
-    "Kubik-2023": [
-      "IMG_2249.webp",
-      "IMG_2273.webp",
-      "IMG_2275.webp"
-    ],
     "Nokia-2025": [
+      "IMG_4139.webp",
       "IMG_4243.webp",
-      "IMG_4485.webp",
       "IMG_5258.webp"
+    ],
+    "Qine Films-2021": [
+      "photo_2026-06-12_11-49-07.webp",
+      "photo_2026-06-12_11-49-12.webp",
+      "photo_2026-06-12_11-49-19.webp"
+    ],
+    "--": {
+      "folder": "Commissions/Restaurants",
+      "images": [
+        "IMG_5472.webp",
+        "IMG_5479.webp",
+        "IMG_5608.webp"
+      ]
+    },
+    "Dembel-2025": {
+      "folder": "Commissions/Restaurants",
+      "images": [
+        "IMG_9163.webp",
+        "IMG_9188.webp",
+        "IMG_9196.webp",
+        "IMG_9554.webp",
+        "photo_2026-06-12_11-48-16.webp"
+      ]
+    },
+    "Fabrica-2025": {
+      "folder": "Commissions/Restaurants",
+      "images": [
+        "IMG_1285.webp",
+        "IMG_1470.webp",
+        "IMG_1472.webp",
+        "IMG_1475.webp"
+      ]
+    },
+    "Savor-2024": {
+      "folder": "Commissions/Restaurants",
+      "images": [
+        "IMG_1214.webp",
+        "IMG_2345.webp",
+        "IMG_2346.webp"
+      ]
+    },
+    "Shifta-2021": {
+      "folder": "Commissions/Restaurants",
+      "images": [
+        "IMG_1364.webp",
+        "IMG_1366.webp"
+      ]
+    },
+    "Sosha-2025-2.2x3.5m": {
+      "folder": "Commissions/Restaurants",
+      "images": [
+        "IMG_0988.webp",
+        "IMG_0989.webp"
+      ]
+    },
+    "Sheraton-2026": [
+      "IMG_1156.webp",
+      "IMG_1179.webp",
+      "IMG_1188.webp",
+      "IMG_1190.webp",
+      "IMG_1193.webp",
+      "IMG_1200.webp",
+      "IMG_1205.webp",
+      "IMG_1208.webp",
+      "IMG_9692.webp",
+      "IMG_9709.webp"
+    ],
+    "Signature Residence-2025": [
+      "IMG_1060.webp",
+      "IMG_1451.webp",
+      "IMG_2334.webp",
+      "IMG_2335.webp",
+      "IMG_2336.webp",
+      "IMG_5390.webp",
+      "IMG_5458.webp"
+    ],
+    "Youthopians-2026": [
+      "IMG_0279.webp",
+      "IMG_0559.webp",
+      "IMG_0972.webp",
+      "IMG_0975.webp",
+      "IMG_1005.webp"
     ]
   },
-  "Exhibitions and Workshops": {
-    "Amharic Graffiti-Exhibition": {
-      "folder": "More",
-      "images": [
-        "IMG_0246.webp",
-        "IMG_0320.webp",
-        "IMG_0341.webp",
-        "IMG_0371.webp",
-        "IMG_0410.webp",
-        "IMG_0422.webp"
-      ]
-    },
-    "Layers of Memory-Exhibition": {
-      "folder": "More",
-      "images": [
-        "IMG_0746.webp",
-        "IMG_0788.webp",
-        "IMG_0791.webp",
-        "IMG_0801.webp",
-        "IMG_1307.webp",
-        "IMG_1308.webp",
-        "IMG_1310.webp",
-        "IMG_8057.webp",
-        "IMG_8058.webp",
-        "IMG_8059.webp"
-      ]
-    },
-    "Mural Workshop": {
-      "folder": "More",
-      "images": [
-        "IMG_0037.webp",
-        "IMG_9867.webp"
-      ]
-    }
+  "Cultural Institutions and Creative Hubs": {
+    "Chewata Awaqi-Alliance Ethio-francaise Compound-2025-5x2m": [
+      "IMG_1680.webp",
+      "IMG_1724.webp",
+      "IMG_2031.webp"
+    ],
+    "Ethiopian AI Institute-Timbuktoo Africa-2026-320m2": [
+      "IMG_5398.webp",
+      "IMG_5403.webp",
+      "IMG_9376.webp",
+      "IMG_9381.webp"
+    ],
+    "French Embassy": [
+      "IMG_2250.webp"
+    ],
+    "INSA-National ID-2025-320m2": [
+      "IMG_6839.webp",
+      "IMG_7652.webp",
+      "IMG_7655.webp",
+      "IMG_7658.webp",
+      "IMG_7663.webp",
+      "IMG_8136.webp",
+      "IMG_8165.webp"
+    ],
+    "Italian Cultural Institute-2021-ASA-2.5x6m": [
+      "IMG_8054.webp",
+      "IMG_8055.webp"
+    ],
+    "Lycee Guebre-Mariam school-2024-2x4m": [
+      "IMG_7830.webp",
+      "IMG_8255.webp",
+      "IMG_8297.webp",
+      "IMG_8337.webp",
+      "IMG_8360.webp",
+      "ceiling mockup.webp"
+    ],
+    "Timbuktoo Africa-UNDP-2025": [
+      "IMG_2685.webp",
+      "IMG_2706.webp",
+      "IMG_2708.webp",
+      "IMG_2711.webp",
+      "IMG_2719.webp",
+      "IMG_7047.webp"
+    ]
   },
-  "Digital Illustrations": {},
+  "Digital Illustrations": {
+    "Harar Beer": [
+      "IMG_0995.webp",
+      "IMG_1003.webp"
+    ],
+    "Heineken & Walia Beer": [
+      "IMG_1042.webp",
+      "IMG_1171.webp"
+    ],
+    "Orbit": [
+      "Orbit 3.webp"
+    ]
+  },
+  "Exhibition & Workshops": {
+    "Amharic Graffiti-Exhibition": [
+      "IMG_0235.webp",
+      "IMG_0246.webp",
+      "IMG_0320.webp",
+      "IMG_0336.webp",
+      "IMG_0338.webp",
+      "IMG_0339.webp",
+      "IMG_0340.webp",
+      "IMG_0341.webp",
+      "IMG_0342.webp",
+      "IMG_0343.webp",
+      "IMG_0344.webp",
+      "IMG_0369.webp",
+      "IMG_0370.webp",
+      "IMG_0371.webp",
+      "IMG_0372.webp",
+      "IMG_0373.webp",
+      "IMG_0374.webp",
+      "IMG_0375.webp",
+      "IMG_0376.webp",
+      "IMG_0377.webp",
+      "IMG_0402.webp",
+      "IMG_0410.webp",
+      "IMG_0422.webp",
+      "IMG_8056.webp",
+      "IMG_8058.webp",
+      "IMG_8059.webp"
+    ],
+    "Layers of Memory-Exhibition": [
+      "IMG_0746.webp",
+      "IMG_0788.webp",
+      "IMG_0791.webp",
+      "IMG_0801.webp",
+      "IMG_1215.webp",
+      "IMG_1216.webp",
+      "IMG_1307.webp",
+      "IMG_1308.webp",
+      "IMG_1310.webp",
+      "IMG_8057.webp",
+      "photo_2026-06-12_15-51-06.webp"
+    ],
+    "Mural Workshop": [
+      "IMG_0037.webp",
+      "IMG_0081.webp",
+      "IMG_9192.webp",
+      "IMG_9281.webp",
+      "IMG_9867.webp"
+    ]
+  },
   "Set Design": {
-    "Set Design": {
-      "folder": "More",
-      "images": [
-        "IMG_2982.webp",
-        "IMG_2983.webp",
-        "IMG_2984.webp",
-        "IMG_7117.webp",
-        "IMG_8061.webp",
-        "IMG_8062.webp",
-        "IMG_8063.webp",
-        "IMG_8064.webp",
-        "IMG_8065.webp"
-      ]
-    }
+    "7up-Qine Films": [
+      "IMG_8062.webp"
+    ],
+    "Ambo Water-Youthopians": [
+      "IMG_8063.webp"
+    ],
+    "Dalga Leather-Gezat Communications": [
+      "IMG_7117.webp"
+    ],
+    "Nigus Malt-Youthopians": [
+      "IMG_2982.webp",
+      "IMG_2983.webp",
+      "IMG_2984.webp"
+    ],
+    "Photoshoot-Mekbib Tadessse": [
+      "468284319_18467707171060816_9036183243434907833_n.webp",
+      "468306717_18467707417060816_2993682607605571456_n.webp",
+      "IMG_8061.webp",
+      "SnapInsta.to_468210258_18467707165060816_2433213377132882359_n.webp"
+    ],
+    "Sun Chips-Qine Films": [
+      "IMG_8064.webp"
+    ],
+    "Zemen Bank-Youthopians": [
+      "IMG_8065.webp"
+    ]
+  },
+  "Steet Art": {
+    "Bella skate part-Corridor Project-2026-190m2": [
+      "IMG_6408.webp",
+      "IMG_7808.webp",
+      "IMG_7809.webp",
+      "IMG_7811.webp",
+      "IMG_7814.webp",
+      "IMG_7818.webp",
+      "photo_2026-06-12_11-48-56.webp"
+    ],
+    "Dante-Italian cultural institute-ASA-2021": [
+      "IMG_2221.webp",
+      "IMG_5920.webp",
+      "IMG_5929.webp",
+      "IMG_5936.webp",
+      "IMG_5948.webp"
+    ],
+    "Dembel Area-2025-Munir de Vries": [
+      "IMG_2506.webp",
+      "IMG_2510.webp",
+      "IMG_5011.webp",
+      "IMG_5097.webp",
+      "IMG_5701.webp"
+    ],
+    "Ethiopian skatepark -Corridor Project-2025-430m2": [
+      "236bec72-6a48-4dae-9f5e-ced9d0367448.webp",
+      "85486bec-2875-48d5-9730-ea94f8443823.webp",
+      "IMG_6368.webp",
+      "IMG_6369.webp",
+      "IMG_6373.webp",
+      "IMG_6386.webp",
+      "a22e9b52-7285-4368-b1ca-0c25ae6e181c.webp",
+      "ac43676d-51f2-4803-a0a7-9701b2722589.webp",
+      "e4f0df70-8592-4f21-b14f-63e849d70eb9.webp"
+    ],
+    "Eu delegation to Au -ASA-2021-Moh Awudu": [
+      "IMG_2222.webp",
+      "IMG_2223.webp"
+    ],
+    "Layers of memory-2025-Ephrata Birhanu": [
+      "IMG_2784.webp",
+      "IMG_2792.webp",
+      "Screenshot 2024-12-21 103945.webp",
+      "Screenshot 2024-12-21 104352.webp",
+      "photo_2026-06-12_11-48-30.webp",
+      "photo_2026-06-12_11-48-34.webp"
+    ],
+    "Sarbet Corridor Project-2025": [
+      "IMG_7428.webp",
+      "IMG_7464.webp"
+    ],
+    "Setaweet-Around Estifanos-2021": [
+      "IMG_4565.webp",
+      "IMG_6153.webp",
+      "IMG_6201.webp",
+      "IMG_7923.webp"
+    ]
   }
 }

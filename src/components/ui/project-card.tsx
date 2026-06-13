@@ -16,7 +16,7 @@ export default function ProjectCard({ title, year, category, imageSrc, descripti
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
-      className="group relative overflow-hidden rounded-xl bg-white/5 border border-white/10"
+      className="group relative overflow-hidden bg-white/5 border border-white/10"
     >
       <div className="aspect-[4/5] relative overflow-hidden">
         <Image

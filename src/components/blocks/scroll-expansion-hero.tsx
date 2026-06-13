@@ -214,7 +214,7 @@ const ScrollExpandMedia = ({
                   height: `${mediaHeightVh}vh`,
                   transform: 'translate(-50%, -50%)',
                   boxShadow: scrollProgress < 1 ? '0px 0px 50px rgba(0, 0, 0, 0.3)' : 'none',
-                  borderRadius: `${(1 - scrollProgress) * 16}px`,
+                  borderRadius: '0px',
                   willChange: 'width, height',
                   contain: 'layout style',
                 }}
@@ -234,7 +234,7 @@ const ScrollExpandMedia = ({
                             '?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1&playlist=' +
                             mediaSrc.split('v=')[1]
                         }
-                        className='w-full h-full rounded-xl border-none'
+                        className='w-full h-full border-none'
                         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                         allowFullScreen
                       />
@@ -244,7 +244,7 @@ const ScrollExpandMedia = ({
                       ></div>
 
                       <motion.div
-                        className='absolute inset-0 bg-black rounded-xl'
+                        className='absolute inset-0 bg-black'
                         initial={{ opacity: 0.4 }}
                         animate={{ opacity: 0.4 - scrollProgress * 0.4 }}
                         transition={{ duration: 0.2 }}
@@ -260,7 +260,7 @@ const ScrollExpandMedia = ({
                         loop
                         playsInline
                         preload='auto'
-                        className='w-full h-full object-cover rounded-xl'
+                        className='w-full h-full object-cover'
                       />
                       <div
                         className='absolute inset-0 z-10'
@@ -268,7 +268,7 @@ const ScrollExpandMedia = ({
                       ></div>
 
                       <motion.div
-                        className='absolute inset-0 bg-black rounded-xl'
+                        className='absolute inset-0 bg-black'
                         initial={{ opacity: 0.4 }}
                         animate={{ opacity: 0.4 - scrollProgress * 0.4 }}
                         transition={{ duration: 0.2 }}
@@ -284,11 +284,11 @@ const ScrollExpandMedia = ({
                       sizes='95vw'
                       priority
                       style={{ objectPosition: isMobileState ? '35% 15%' : 'center' }}
-                      className='w-full h-full object-cover rounded-xl'
+                      className='w-full h-full object-cover'
                     />
 
                     <motion.div
-                      className='absolute inset-0 bg-black rounded-xl'
+                      className='absolute inset-0 bg-black'
                       initial={{ opacity: 0.4 }}
                       animate={{ opacity: 0.4 - scrollProgress * 0.4 }}
                       transition={{ duration: 0.2 }}

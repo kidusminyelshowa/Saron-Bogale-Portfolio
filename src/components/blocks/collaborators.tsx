@@ -19,9 +19,8 @@ export default function Collaborators() {
 
           {/* Left Column: Title */}
           <div className="lg:col-span-1">
-            <p className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight">
-              Collaborated <br className="hidden lg:block" />
-              with <span className="emphasis font-normal text-brand-coral">Creative Hubs</span>
+            <p className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight">
+              Collaborated <span className="emphasis font-normal text-brand-coral">with</span>
             </p>
           </div>
 
@@ -53,10 +52,10 @@ export default function Collaborators() {
                     key={`${item.name}-${index}`}
                     className="flex-shrink-0 transition-colors duration-300 transform hover:scale-105"
                   >
-                    <img 
-                      src={item.src} 
-                      alt={item.name} 
-                      className="h-6 md:h-8 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity duration-300" 
+                    <img
+                      src={item.src}
+                      alt={item.name}
+                      className="h-6 md:h-8 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity duration-300"
                     />
                   </div>
                 ))}
@@ -83,10 +82,10 @@ export default function Collaborators() {
                     key={`${item.name}-${index}-dup`}
                     className="flex-shrink-0 transition-colors duration-300 transform hover:scale-105"
                   >
-                    <img 
-                      src={item.src} 
-                      alt={item.name} 
-                      className="h-6 md:h-8 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity duration-300" 
+                    <img
+                      src={item.src}
+                      alt={item.name}
+                      className="h-6 md:h-8 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity duration-300"
                     />
                   </div>
                 ))}

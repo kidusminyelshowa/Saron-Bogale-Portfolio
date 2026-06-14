@@ -26,7 +26,7 @@ export default function Home() {
         <ScrollExpandMedia
           mediaType="image"
           mediaSrc="/WOW09594.webp"
-          bgImageSrc="/Projects/Cultural Institutions and Creative Hubs/Lycee Guebre-Mariam school-2024-2x4(2)/IMG_8360.webp"
+          bgImageSrc="/4790d18e687b61cef98fc97a6ebedf00_032851.jpg"
           title="SARON BOGALE"
           date="Muralist & Architect"
           scrollToExpand="Scroll to explore"
@@ -86,12 +86,12 @@ export default function Home() {
               <div className="relative aspect-[4/5] w-full max-w-2xl ml-auto">
                 <div className="absolute inset-0 bg-brand-coral -rotate-2 opacity-10"></div>
                 <Image
-                  src="/4E2A0093.webp"
+                  src="/IMG_4301.webp"
                   alt="Saron Bogale at work"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 10vw, 50vw"
                   style={{ objectPosition: 'center center' }}
-                  className="shadow-2xl relative z-10 object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  className="object-cover"
                 />
               </div>
             </div>

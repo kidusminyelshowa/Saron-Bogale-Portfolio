@@ -25,7 +25,7 @@ export default function Home() {
       >
         <ScrollExpandMedia
           mediaType="image"
-          mediaSrc="/WOW09594.webp"
+          mediaSrc="/saron_header.webp"
           bgImageSrc="/4790d18e687b61cef98fc97a6ebedf00_032851.jpg"
           title="SARON BOGALE"
           date="Muralist & Architect"
@@ -86,7 +86,7 @@ export default function Home() {
               <div className="relative aspect-[4/5] w-full max-w-2xl ml-auto">
                 <div className="absolute inset-0 bg-brand-coral -rotate-2 opacity-10"></div>
                 <Image
-                  src="/IMG_4301.webp"
+                  src="/saron_in_action.webp"
                   alt="Saron Bogale at work"
                   fill
                   sizes="(max-width: 1024px) 10vw, 50vw"

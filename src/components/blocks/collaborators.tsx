@@ -3,12 +3,19 @@
 import { motion } from 'framer-motion';
 
 const PARTNER_LOGOS = [
-  { name: 'Partner 1', src: '/Partners/24af78affa5bb571b3d6d58c43d2e955_transparent.png' },
-  { name: 'Partner 2', src: '/Partners/images_transparent.png' },
-  { name: 'Partner 3', src: '/Partners/images_1_transparent.png' },
-  { name: 'Partner 4', src: '/Partners/images_2_transparent.png' },
-  { name: 'Partner 5', src: '/Partners/images_3_transparent.png' },
-  { name: 'Partner 6', src: '/Partners/s0wle8ye_400x400_transparent.png' },
+  { name: 'Partner 1', src: '/Partners/photo_2026-07-23_17-01-19.png' },
+  { name: 'Partner 2', src: '/Partners/photo_2026-07-23_17-02-03.png' },
+  { name: 'Partner 3', src: '/Partners/photo_2026-07-23_17-02-09.png' },
+  { name: 'Partner 4', src: '/Partners/photo_2026-07-23_17-02-15.png' },
+  { name: 'Partner 5', src: '/Partners/photo_2026-07-23_17-02-20.png' },
+  { name: 'Partner 6', src: '/Partners/photo_2026-07-23_17-02-25.png' },
+  { name: 'Partner 7', src: '/Partners/photo_2026-07-23_17-02-30.png' },
+  { name: 'Partner 8', src: '/Partners/photo_2026-07-23_17-02-34.png' },
+  { name: 'Partner 9', src: '/Partners/photo_2026-07-23_17-02-39.png' },
+  { name: 'Partner 10', src: '/Partners/photo_2026-07-23_17-02-43.png' },
+  { name: 'Partner 11', src: '/Partners/photo_2026-07-23_17-02-49.png' },
+  { name: 'Partner 12', src: '/Partners/photo_2026-07-23_17-02-54.png' },
+  { name: 'Partner 13', src: '/Partners/photo_2026-07-23_17-02-58.png' },
 ];
 
 export default function Collaborators() {

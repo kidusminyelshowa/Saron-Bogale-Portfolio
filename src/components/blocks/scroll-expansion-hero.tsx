@@ -164,16 +164,20 @@ const ScrollExpandMedia = ({
     return () => window.removeEventListener('resize', checkDevice);
   }, []);
 
+  const isDesktop = !isMobileState && !isTabletState;
+
   const mediaWidthVw = isMobileState
     ? 65 + scrollProgress * 35   // 65vw → 100vw on mobile
     : isTabletState
       ? 35 + scrollProgress * 65   // 35vw → 100vw on tablet
-      : 20 + scrollProgress * 80;  // 20vw → 100vw on desktop
+      : 20 + scrollProgress * 40;  // 20vw → 60vw on desktop
+
   const mediaHeightVh = isMobileState
     ? 50 + scrollProgress * 50   // 50vh → 100vh on mobile
     : isTabletState
       ? 45 + scrollProgress * 55   // 45vh → 100vh on tablet
       : 50 + scrollProgress * 50;  // 50vh → 100vh on desktop
+
   const textTranslateX = scrollProgress * (isMobileState ? 120 : isTabletState ? 130 : 150);
 
   const firstWord = title ? title.split(' ')[0] : '';
@@ -186,6 +190,7 @@ const ScrollExpandMedia = ({
     >
       <section className='relative flex flex-col items-center justify-start min-h-[100dvh] w-full max-w-[100vw] overflow-x-hidden'>
         <div className='relative w-full flex flex-col items-center min-h-[100dvh]'>
+          {/* Background image & dark overlay */}
           <motion.div
             className='absolute inset-0 z-0 h-full'
             initial={{ opacity: 0 }}
@@ -205,6 +210,22 @@ const ScrollExpandMedia = ({
             <div className='absolute inset-0 bg-black/60' />
           </motion.div>
 
+          {/* Desktop Right Side Panel: Plain Light Background with Bio */}
+          {isDesktop && (
+            <motion.div
+              className='absolute top-0 right-0 bottom-0 z-20 bg-brand-sand flex items-center justify-center p-8 lg:p-16'
+              style={{
+                width: '39.70vw',
+                opacity: scrollProgress,
+                pointerEvents: showContent ? 'auto' : 'none',
+              }}
+            >
+              <div className="w-full max-w-4xl text-brand-obsidian translate-x-[-40px]">
+                {children}
+              </div>
+            </motion.div>
+          )}
+
           <div className='container mx-auto flex flex-col items-center justify-start relative z-10'>
             <div className='flex flex-col items-center justify-center w-full h-[100dvh] relative'>
               <div
@@ -212,10 +233,15 @@ const ScrollExpandMedia = ({
                 style={{
                   width: `${mediaWidthVw}vw`,
                   height: `${mediaHeightVh}vh`,
-                  transform: 'translate(-50%, -50%)',
+                  // Desktop: right-edge anchored. translateX = (10 - width)vw keeps
+                  // the right edge fixed while the image expands leftward.
+                  // Mobile/tablet: center-anchored as before.
+                  transform: isDesktop
+                    ? `translate(${10 - mediaWidthVw}vw, -50%)`
+                    : 'translate(-50%, -50%)',
                   boxShadow: scrollProgress < 1 ? '0px 0px 50px rgba(0, 0, 0, 0.3)' : 'none',
                   borderRadius: '0px',
-                  willChange: 'width, height',
+                  willChange: 'width, height, transform',
                   contain: 'layout style',
                 }}
               >
@@ -309,19 +335,6 @@ const ScrollExpandMedia = ({
                     </p>
                   )}
                 </div>
-
-                {/* Bio Overlay - Positioned on the right, hidden on mobile */}
-                <motion.div
-                  className='absolute inset-0 hidden md:flex items-center justify-end z-20 overflow-y-auto p-6 md:p-16 lg:p-24'
-                  initial={{ opacity: 0, pointerEvents: 'none' }}
-                  animate={{
-                    opacity: showContent ? 1 : 0,
-                    pointerEvents: showContent ? 'auto' : 'none'
-                  }}
-                  transition={{ duration: 0.5 }}
-                >
-                  {children}
-                </motion.div>
               </div>
 
               <div

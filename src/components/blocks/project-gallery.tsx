@@ -34,9 +34,16 @@ const CATEGORY_CONFIG = [
     titleColor: '#F4F7FA',
   },
   {
-    id: 'Exhibition & Workshops',
-    label: 'Exhibitions & Workshops',
+    id: 'Exhibitions',
+    label: 'Exhibitions',
     color: '#FF5A5F',
+    textColor: '#06121C',
+    titleColor: '#F4F7FA',
+  },
+  {
+    id: 'Workshops',
+    label: 'Workshops',
+    color: '#E07A5F',
     textColor: '#06121C',
     titleColor: '#F4F7FA',
   },
@@ -72,14 +79,10 @@ const FEATURED_IMAGE_MAP: Record<string, string> = {
   'Layers of memory-2025-Ephrata Birhanu': 'IMG_2792.webp',
   'Sheraton-2026': 'IMG_1179.webp',
   'Savor-2024': 'IMG_1214.webp',
-  '--': 'IMG_5608.webp',
-  'Dembel-2025': 'photo_2026-06-12_11-48-16.webp',
   'Fabrica-2025': 'IMG_1472.webp',
   'Sosha-2025-2.2x3.5m': 'IMG_0988.webp',
   'Youthopians-2026': 'IMG_1005.webp',
-  'Qine Films-2021': 'photo_2026-06-12_11-49-19.webp',
   'Signature Residence-2025': 'IMG_2336.webp',
-  '-': 'IMG_9373.webp',
   'Nokia-2025': 'IMG_4243.webp',
   'Daye Bensa-Dukamo Coffee-2025-10x4.8': 'IMG_0023.webp',
   'Amharic Graffiti-Exhibition': 'IMG_0377.webp',
@@ -110,7 +113,6 @@ function resolveProjectEntry(
 export default function ProjectGallery() {
   const [activeTab, setActiveTab] = useState<(typeof CATEGORY_CONFIG)[number]>(CATEGORY_CONFIG[0]);
   const [selectedProject, setSelectedProject] = useState<any>(null);
-  const [commissionsSubFilter, setCommissionsSubFilter] = useState<'general' | 'restaurants'>('general');
 
   const categoryProjects =
     (projectsData as Record<string, Record<string, ProjectEntry>>)[activeTab.id] ??
@@ -126,7 +128,7 @@ export default function ProjectGallery() {
       const basePath = `/Projects/${folder}/${name}`;
       const override = (metadataOverrides as Record<
         string,
-        { title: string; year: string; size: string; collab: string }
+        { title: string; year: string; size: string; collab: string; location?: string }
       >)[name];
 
       if (override) {
@@ -135,34 +137,9 @@ export default function ProjectGallery() {
           year: override.year,
           size: override.size,
           collaborators: override.collab,
-          img: `${basePath}/${imgs[0]}`,
+          location: override.location || '',
+          img: imgs.length > 0 ? `${basePath}/${imgs[0]}` : null,
           allImgs: imgs.map((i) => `${basePath}/${i}`),
-          isRestaurant: folder.includes('Restaurants')
-        };
-      }
-
-      // Metadata overrides for special folders "-" and "--"
-      if (name === '-') {
-        return {
-          title: 'Commission',
-          year: '2025',
-          size: 'Mural',
-          collaborators: '',
-          img: `${basePath}/${imgs[0]}`,
-          allImgs: imgs.map((i) => `${basePath}/${i}`),
-          isRestaurant: false
-        };
-      }
-
-      if (name === '--') {
-        return {
-          title: 'Restaurant Commission',
-          year: '2025',
-          size: 'Mural',
-          collaborators: '',
-          img: `${basePath}/${imgs[0]}`,
-          allImgs: imgs.map((i) => `${basePath}/${i}`),
-          isRestaurant: true
         };
       }
 
@@ -172,16 +149,10 @@ export default function ProjectGallery() {
         year: parts[1] || '2024',
         size: parts[2] || 'Mural',
         collaborators: parts[3] || '',
-        img: `${basePath}/${imgs[0]}`,
+        location: '',
+        img: imgs.length > 0 ? `${basePath}/${imgs[0]}` : null,
         allImgs: imgs.map((i) => `${basePath}/${i}`),
-        isRestaurant: folder.includes('Restaurants')
       };
-    })
-    .filter(project => {
-      if (activeTab.id !== 'Commissions') return true;
-      if (commissionsSubFilter === 'general') return !project.isRestaurant;
-      if (commissionsSubFilter === 'restaurants') return project.isRestaurant;
-      return true;
     });
 
   return (
@@ -199,7 +170,6 @@ export default function ProjectGallery() {
               key={cat.id}
               onClick={() => {
                 setActiveTab(cat);
-                setCommissionsSubFilter('general');
               }}
               className={`relative flex-shrink-0 px-6 py-2 md:px-12 md:py-4 transition-all duration-300 group cursor-pointer whitespace-nowrap ${
                 activeTab.id === cat.id ? 'z-40' : 'text-white/40 hover:text-white z-0'
@@ -229,32 +199,12 @@ export default function ProjectGallery() {
             backgroundColor: activeTab.color
           }}
         >
-          {/* Sub-filtering buttons for Commissions tab */}
-          {activeTab.id === 'Commissions' && (
-            <div className="flex justify-center gap-4 pt-8 md:pt-12 px-6">
-              {[
-                { id: 'general', label: 'General' },
-                { id: 'restaurants', label: 'Restaurants' },
-              ].map((sub) => (
-                <button
-                  key={sub.id}
-                  onClick={() => setCommissionsSubFilter(sub.id as any)}
-                  className={`px-6 py-2 text-xs font-bold tracking-wider uppercase transition-all duration-300 ${
-                    commissionsSubFilter === sub.id
-                      ? 'bg-brand-obsidian text-white shadow-lg scale-105'
-                      : 'bg-white/10 text-brand-obsidian hover:bg-white/20'
-                  }`}
-                >
-                  {sub.label}
-                </button>
-              ))}
-            </div>
-          )}
+
 
           <div className="p-8 md:p-24">
             <AnimatePresence mode="wait">
               <motion.div
-                key={`${activeTab.id}-${commissionsSubFilter}`}
+                key={activeTab.id}
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
@@ -276,13 +226,21 @@ export default function ProjectGallery() {
                     onClick={() => setSelectedProject(project)}
                   >
                     <div className="aspect-[4/5] relative overflow-hidden shadow-2xl mb-4 border border-white/5 bg-brand-obsidian/10">
-                       <Image 
-                         src={project.img} 
-                         alt={project.title}
-                         fill
-                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                         className="object-cover object-center"
-                       />
+                      {project.img ? (
+                         <Image 
+                           src={project.img} 
+                           alt={project.title}
+                           fill
+                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                           className="object-cover object-center"
+                         />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-black/20 p-6 text-center">
+                          <span className="text-xs uppercase font-bold opacity-40" style={{ color: activeTab.textColor }}>
+                            No Images Available
+                          </span>
+                        </div>
+                      )}
 
                         {/* Thumbnail Grid - Appears inside viewport on hover */}
                         {project.allImgs.length > 1 && (

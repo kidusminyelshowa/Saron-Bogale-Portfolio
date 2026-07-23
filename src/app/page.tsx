@@ -33,18 +33,18 @@ export default function Home() {
           textBlend
         >
           <ScrollOpacityText
-            title="I am Saron Bogale"
+            title="This is Saron Bogale"
             className="text-sm sm:text-base md:text-lg lg:text-xl font-normal leading-relaxed tracking-normal"
-            text="An architect, muralist and set designer based in Addis Ababa Ethiopia, with over seven years of experience in mural art. My work focuses on transforming spaces and engaging communities through public art, murals, and creative projects. I am also the founder of JONIYA Studio, where we teach art to kids and host art-related events. I often collaborate with cultural spaces and creative hubs; my practice involves developing concepts, working on-site, and engaging closely with teams and communities."
+            text="She is an architect, muralist and set designer based in Addis Ababa, Ethiopia. With over seven years of experience in mural art Her work focuses on transforming spaces and engaging communities through public art, murals, and creative projects. She is also the founder of JONIYA Studio, where she teaches art to children and hosts art related events. She often collaborates with cultural spaces and creative hubs. Her practice involves developing concepts, working on site, and engaging closely with teams and communities."
           />
         </ScrollExpandMedia>
 
-        {/* Mobile Bio Section - shown only on mobile */}
-        <div className="block md:hidden w-full bg-brand-sand">
+        {/* Mobile & Tablet Bio Section - shown below hero for screens under lg (1024px) */}
+        <div className="block lg:hidden w-full bg-brand-sand">
           <ScrollOpacityText
-            title="I am Saron Bogale"
+            title="This is Saron Bogale"
             className="text-base font-normal leading-relaxed tracking-normal"
-            text="An architect, muralist and set designer based in Addis Ababa Ethiopia, with over seven years of experience in mural art. My work focuses on transforming spaces and engaging communities through public art, murals, and creative projects. I am also the founder of JONIYA Studio, where we teach art to kids and host art-related events. I often collaborate with cultural spaces and creative hubs; my practice involves developing concepts, working on-site, and engaging closely with teams and communities."
+            text="She is an architect, muralist and set designer based in Addis Ababa, Ethiopia. With over seven years of experience in mural art Her work focuses on transforming spaces and engaging communities through public art, murals, and creative projects. She is also the founder of JONIYA Studio, where she teaches art to children and hosts art related events. She often collaborates with cultural spaces and creative hubs. Her practice involves developing concepts, working on site, and engaging closely with teams and communities."
           />
         </div>
 

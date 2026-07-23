@@ -85,7 +85,7 @@ const FEATURED_IMAGE_MAP: Record<string, string> = {
   'Signature Residence-2025': 'IMG_2336.webp',
   'Nokia-2025': 'IMG_4243.webp',
   'Daye Bensa-Dukamo Coffee-2025-10x4.8': 'IMG_0023.webp',
-  'Amharic Graffiti-Exhibition': 'IMG_0377.webp',
+  'Beyond the Street-Exhibition': 'IMG_0377.webp',
   'Layers of Memory-Exhibition': 'IMG_0788.webp'
 };
 

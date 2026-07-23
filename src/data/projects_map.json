@@ -72,7 +72,13 @@
       "IMG_5097.webp",
       "IMG_5701.webp"
     ],
-    "Trek Thunder Kelly-2026": [],
+    "Trek Thunder Kelly-2026": [
+      "a22e9b52-7285-4368-b1ca-0c25ae6e181c.webp",
+      "ac43676d-51f2-4803-a0a7-9701b2722589.webp",
+      "e4f0df70-8592-4f21-b14f-63e849d70eb9.webp",
+      "85486bec-2875-48d5-9730-ea94f8443823.webp",
+      "236bec72-6a48-4dae-9f5e-ced9d0367448.webp"
+    ],
     "Setaweet-Around Estifanos-2021": [
       "IMG_4565.webp",
       "IMG_6153.webp",
@@ -141,8 +147,6 @@
         "IMG_0989.webp"
       ]
     },
-    "Yegna Gize Podcast-2025": [],
-    "Parlay Addis-2024": [],
     "Youthopians-2026": [
       "IMG_0279.webp",
       "IMG_0559.webp",
@@ -153,11 +157,12 @@
     "Mug and Munch-2026": {
       "folder": "Commissions/Restaurants",
       "images": [
-        "IMG_9163.webp",
         "IMG_9188.webp",
+        "IMG_9163.webp",
         "IMG_9196.webp",
         "IMG_9554.webp",
-        "photo_2026-06-12_11-48-16.webp"
+        "photo_2026-06-12_11-48-16.webp",
+        "IMG_0559.webp"
       ]
     },
     "Sheraton-2026": [
@@ -178,7 +183,6 @@
       "IMG_5533.webp",
       "IMG_5534.webp"
     ],
-    "Dodai-2025": [],
     "Savor-2024": {
       "folder": "Commissions/Restaurants",
       "images": [
@@ -198,33 +202,39 @@
     ]
   },
   "Exhibitions": {
-    "Layers of Memory-Exhibition": [
-      "IMG_0746.webp",
-      "IMG_0788.webp",
-      "IMG_0791.webp",
-      "IMG_0801.webp",
-      "IMG_1215.webp",
-      "IMG_1216.webp",
-      "IMG_1307.webp",
-      "IMG_1308.webp",
-      "IMG_1310.webp",
-      "IMG_8057.webp",
-      "photo_2026-06-12_15-51-06.webp"
-    ],
-    "Amharic Graffiti-Exhibition": [
-      "IMG_0235.webp",
-      "IMG_0246.webp",
-      "IMG_0320.webp",
-      "IMG_0336.webp",
-      "IMG_0338.webp",
-      "IMG_0339.webp",
-      "IMG_0402.webp",
-      "IMG_0410.webp",
-      "IMG_0422.webp",
-      "IMG_8056.webp",
-      "IMG_8058.webp",
-      "IMG_8059.webp"
-    ]
+    "Layers of Memory-Exhibition": {
+      "folder": "Exhibition",
+      "images": [
+        "IMG_0746.webp",
+        "IMG_0788.webp",
+        "IMG_0791.webp",
+        "IMG_0801.webp",
+        "IMG_1215.webp",
+        "IMG_1216.webp",
+        "IMG_1307.webp",
+        "IMG_1308.webp",
+        "IMG_1310.webp",
+        "IMG_8057.webp",
+        "photo_2026-06-12_15-51-06.webp"
+      ]
+    },
+    "Beyond the Street-Exhibition": {
+      "folder": "Exhibition",
+      "images": [
+        "IMG_0235.webp",
+        "IMG_0246.webp",
+        "IMG_0320.webp",
+        "IMG_0336.webp",
+        "IMG_0338.webp",
+        "IMG_0339.webp",
+        "IMG_0402.webp",
+        "IMG_0410.webp",
+        "IMG_0422.webp",
+        "IMG_8056.webp",
+        "IMG_8058.webp",
+        "IMG_8059.webp"
+      ]
+    }
   },
   "Workshops": {
     "Mural Workshop": [
@@ -234,7 +244,13 @@
       "IMG_9281.webp",
       "IMG_9867.webp"
     ],
-    "Mural Workshop II-2025": []
+    "Mural Workshop II-2025": [
+      "Saron Portfolio lV 1.webp",
+      "Saron Portfolio lV 2.webp",
+      "Saron Portfolio lV 3.webp",
+      "Saron Portfolio lV 4.webp",
+      "Saron Portfolio lV 5.webp"
+    ]
   },
   "Digital Illustrations": {
     "Harar Beer": [

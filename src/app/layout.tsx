@@ -30,7 +30,7 @@ const meaCulpa = localFont({
 
 export const metadata: Metadata = {
   openGraph: {
-    images: "/Saron Bogale.png",
+    images: "/og.png",
   },
   title: "Saron Bogale",
   description: "The digital portfolio of Saron Bogale",

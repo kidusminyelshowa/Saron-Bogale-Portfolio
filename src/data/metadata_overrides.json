@@ -1,47 +1,279 @@
 {
-  "Lycee Guebre-Mariam school-2024-2x4m": { "title": "Lycée Guèbre-Mariam School", "year": "2024", "size": "2x4m (2x)", "collab": "", "location": "Plan Libre, Addis Ababa" },
-  "INSA-National ID-2025-320m2": { "title": "INSA: National ID", "year": "2025", "size": "~320m²", "collab": "", "location": "Addis Ababa" },
-  "Timbuktoo Africa-UNDP-2025": { "title": "Timbuktoo Africa-UNDP", "year": "2025", "size": "-", "collab": "Benk Designs", "location": "Addis Ababa" },
-  "Italian Cultural Institute-2021-ASA-2.5x6m": { "title": "Italian Cultural Institute", "year": "2021", "size": "2.5x6m", "collab": "ASA", "location": "Italian School, Addis Ababa" },
-  "Ethiopian AI Institute-Timbuktoo Africa-2026-320m2": { "title": "Ethiopian AI Institute", "year": "2026", "size": "~320m²", "collab": "Benk Design and Flawless Events", "location": "Timbuktoo Africa" },
-  "Chewata Awaqi-Alliance Ethio-francaise Compound-2025-5x2m": { "title": "Alliance Éthio-Française", "year": "2025", "size": "5x2m", "collab": "", "location": "Chewata Awaqi" },
-  "French Embassy": { "title": "Embassy of France", "year": "2023", "size": "5x2", "collab": "125 Years Franco-Ethiopian Relations", "location": "Addis Ababa" },
-
-  "Ethiopian skatepark -Corridor Project-2025-430m2": { "title": "Ethio Skate Park I", "year": "2025", "size": "-", "collab": "", "location": "Sarbet Skate Park" },
-  "Bella skate part-Corridor Project-2026-190m2": { "title": "Ethio Skate Park II", "year": "2026", "size": "190m²", "collab": "", "location": "Bella Skate Park" },
-  "Dembel Area-2025-Munir de Vries": { "title": "Munir de Vries Collaboration", "year": "2025", "size": "-", "collab": "Munir de Vries", "location": "Dembel area, Addis Ababa" },
-  "Trek Thunder Kelly-2026": { "title": "Trek Thunder Kelly Collaboration", "year": "2026", "size": "-", "collab": "Trek Thunder Kelly", "location": "Sarbet Skate Park" },
-  "Setaweet-Around Estifanos-2021": { "title": "Setaweet", "year": "2021", "size": "-", "collab": "", "location": "Street of St. Joseph school, Addis Ababa" },
-  "Layers of memory-2025-Ephrata Birhanu": { "title": "Layers of Memory", "year": "2025", "size": "-", "collab": "Ephrata Birhanu", "location": "Addis Ababa" },
-  "Eu delegation to Au -ASA-2021-Moh Awudu": { "title": "EU Delegation to AU", "year": "2021", "size": "-", "collab": "ASA & Moh Awudu", "location": "Addis Ababa" },
-  "Dante-Italian cultural institute-ASA-2021": { "title": "Dante", "year": "2021", "size": "-", "collab": "Italian Cultural Institute x ASA", "location": "Sarbet, Addis Ababa" },
-  "Sarbet Corridor Project-2025": { "title": "Addis Ababa City Administration Project", "year": "2025", "size": "-", "collab": "", "location": "Sarbet, Addis Ababa" },
-
-  "Fabrica-2025": { "title": "Fabrica Thirdspace", "year": "2025", "size": "-", "collab": "", "location": "Bole, Addis Ababa" },
-  "Daye Bensa-Dukamo Coffee-2025-10x4.8": { "title": "Dayebensa Coffee", "year": "2025", "size": "4.8x10m", "collab": "Dukamo Coffee", "location": "Koye Feche, Addis Ababa" },
-  "Nokia-2025": { "title": "Nokia Office Mural", "year": "2025", "size": "-", "collab": "", "location": "Bole Japan, Addis Ababa" },
-  "Signature Residence-2025": { "title": "Signature Residence", "year": "2025", "size": "-", "collab": "Mugo Design and Build", "location": "Bole, Addis Ababa" },
-  "Sosha-2025-2.2x3.5m": { "title": "Sosha", "year": "2025", "size": "2.2x3.5m", "collab": "Mugo Design and Build", "location": "Bole, Addis Ababa" },
-  "Youthopians-2026": { "title": "Youthopians", "year": "2026", "size": "-", "collab": "", "location": "Dembel, Addis Ababa" },
-  "Mug and Munch-2026": { "title": "Mug and Munch", "year": "2026", "size": "-", "collab": "", "location": "Dembel, Addis Ababa" },
-  "Sheraton-2026": { "title": "Sheraton Addis Hotel", "year": "2026", "size": "-", "collab": "Affinity Construction", "location": "Sheraton, Addis Ababa" },
-  "The Box Gym-2023": { "title": "The Box Gym", "year": "2023", "size": "-", "collab": "", "location": "Haya Arat, Addis Ababa" },
-  "Savor-2024": { "title": "Savor Restaurant", "year": "2025", "size": "-", "collab": "", "location": "Flamigo, Addis Ababa" },
-  "Apartment Mural-2026": { "title": "Apartment Mural", "year": "2026", "size": "-", "collab": "", "location": "Adey Ababa, Addis Ababa" },
-
-  "Layers of Memory-Exhibition": { "title": "Layers of Memory", "year": "2025", "size": "-", "collab": "Efrata Birhanu", "location": "The Social Addis Art Gallery, Addis Ababa" },
-  "Beyond the Street-Exhibition": { "title": "Beyond the Street", "year": "2025", "size": "-", "collab": "Efrata Birhanu & Mussie Belachew", "location": "Artawi Gallery" },
-
-  "Mural Workshop": { "title": "Mural Workshop I & Exhibition", "year": "2025", "size": "-", "collab": "", "location": "Artawi Gallery" },
-  "Mural Workshop II-2025": { "title": "Mural Workshop II", "year": "2025", "size": "-", "collab": "", "location": "Legacy Modeling Studio, Addis Ababa" },
-
-  "Harar Beer": { "title": "Harar Beer", "year": "2024", "size": "Digital", "collab": "" },
-  "Heineken & Walia Beer": { "title": "Heineken & Walia Beer", "year": "2024", "size": "Digital", "collab": "" },
-  "Buna and Barley": { "title": "Buna and Barley", "year": "2025", "size": "Digital", "collab": "" },
-
-  "Nigus Malt-Youthopians": { "title": "Negus Malt", "year": "2025", "size": "Set Design", "collab": "" },
-  "Sun Chips & 7up-Qine Films": { "title": "Sun Chips and 7up", "year": "2025", "size": "Set Design", "collab": "" },
-  "Mekbib Tadessse-Photoshoot": { "title": "Mekbib Tadesse", "year": "2025", "size": "Set Design", "collab": "" },
-  "Ambo Water & Zemen Bank-Youthopians": { "title": "Ambo Water & Zemen Bank", "year": "2025", "size": "Set Design", "collab": "" },
-  "Dalga Leather-Gezat Communications": { "title": "Dalga Leather", "year": "2025", "size": "Set Design", "collab": "" }
+  "Lycee Guebre-Mariam school-2024-2x4m": {
+    "title": "Lycée Guèbre-Mariam School",
+    "year": "2024",
+    "size": "2x4m (2x)",
+    "collab": "Plan Libre",
+    "location": "Plan Libre, Addis Ababa"
+  },
+  "INSA-National ID-2025-320m2": {
+    "title": "INSA: National ID",
+    "year": "2025",
+    "size": "~320m²",
+    "collab": "",
+    "location": "Addis Ababa"
+  },
+  "Timbuktoo Africa-UNDP-2025": {
+    "title": "Timbuktoo Africa-UNDP",
+    "year": "2025",
+    "size": "-",
+    "collab": "Benk Designs",
+    "location": "Addis Ababa"
+  },
+  "Italian Cultural Institute-2021-ASA-2.5x6m": {
+    "title": "Italian Cultural Institute",
+    "year": "2021",
+    "size": "2.5x6m",
+    "collab": "ASA",
+    "location": "Italian School, Addis Ababa"
+  },
+  "Ethiopian AI Institute-Timbuktoo Africa-2026-320m2": {
+    "title": "Ethiopian AI Institute",
+    "year": "2026",
+    "size": "~320m²",
+    "collab": "Benk Design and Flawless Events",
+    "location": "Timbuktoo Africa"
+  },
+  "Chewata Awaqi-Alliance Ethio-francaise Compound-2025-5x2m": {
+    "title": "Alliance Éthio-Française",
+    "year": "2025",
+    "size": "5x2m",
+    "collab": "Chewata Awaqi",
+    "location": "Chewata Awaqi"
+  },
+  "French Embassy": {
+    "title": "Embassy of France",
+    "year": "2023",
+    "size": "5x2",
+    "collab": "",
+    "location": "Addis Ababa"
+  },
+  "Ethiopian skatepark -Corridor Project-2025-430m2": {
+    "title": "Ethio Skate Park I",
+    "year": "2025",
+    "size": "Sarbet Skate Park",
+    "collab": "",
+    "location": "Sarbet Skate Park"
+  },
+  "Bella skate part-Corridor Project-2026-190m2": {
+    "title": "Ethio Skate Park II",
+    "year": "2026",
+    "size": "Bella Skate Park",
+    "collab": "",
+    "location": "Bella Skate Park"
+  },
+  "Dembel Area-2025-Munir de Vries": {
+    "title": "Munir de Vries Collaboration",
+    "year": "2025",
+    "size": "Dembel Area",
+    "collab": "Munir de Vries",
+    "location": "Dembel area, Addis Ababa"
+  },
+  "Trek Thunder Kelly-2026": {
+    "title": "Trek Thunder Kelly Collaboration",
+    "year": "2026",
+    "size": "Sarbet Skate Park",
+    "collab": "Trek Thunder Kelly",
+    "location": "Sarbet Skate Park"
+  },
+  "Setaweet-Around Estifanos-2021": {
+    "title": "Setaweet",
+    "year": "2021",
+    "size": "Street of St. Joseph school",
+    "collab": "",
+    "location": "Street of St. Joseph school, Addis Ababa"
+  },
+  "Layers of memory-2025-Ephrata Birhanu": {
+    "title": "Layers of Memory",
+    "year": "2025",
+    "size": "Dembel Area",
+    "collab": "Ephrata Birhanu",
+    "location": "Addis Ababa"
+  },
+  "Eu delegation to Au -ASA-2021-Moh Awudu": {
+    "title": "EU Delegation to AU",
+    "year": "2021",
+    "size": "Sarbet",
+    "collab": "ASA & Moh Awudu",
+    "location": "Addis Ababa"
+  },
+  "Dante-Italian cultural institute-ASA-2021": {
+    "title": "Dante",
+    "year": "2021",
+    "size": "Sarbet",
+    "collab": "Italian Cultural Institute x ASA",
+    "location": "Sarbet, Addis Ababa"
+  },
+  "Sarbet Corridor Project-2025": {
+    "title": "Addis Ababa City Administration Project",
+    "year": "2025",
+    "size": "Sarbet",
+    "collab": "",
+    "location": "Sarbet, Addis Ababa"
+  },
+  "Fabrica-2025": {
+    "title": "Fabrica Thirdspace",
+    "year": "2025",
+    "size": "Bole",
+    "collab": "",
+    "location": "Bole, Addis Ababa"
+  },
+  "Daye Bensa-Dukamo Coffee-2025-10x4.8": {
+    "title": "Dayebensa Coffee",
+    "year": "2025",
+    "size": "4.8x10m",
+    "collab": "Dukamo Coffee",
+    "location": "Koye Feche, Addis Ababa"
+  },
+  "Nokia-2025": {
+    "title": "Nokia Office Mural",
+    "year": "2025",
+    "size": "Bole Japan",
+    "collab": "",
+    "location": "Bole Japan, Addis Ababa"
+  },
+  "Signature Residence-2025": {
+    "title": "Signature Residence",
+    "year": "2025",
+    "size": "Bole",
+    "collab": "Mugo Design and Build",
+    "location": "Bole, Addis Ababa"
+  },
+  "Sosha-2025-2.2x3.5m": {
+    "title": "Sosha",
+    "year": "2025",
+    "size": "2.2x3.5m",
+    "collab": "Mugo Design and Build",
+    "location": "Bole, Addis Ababa"
+  },
+  "Youthopians-2026": {
+    "title": "Youthopians",
+    "year": "2026",
+    "size": "Dembel Area",
+    "collab": "",
+    "location": "Dembel, Addis Ababa"
+  },
+  "Mug and Munch-2026": {
+    "title": "Mug and Munch",
+    "year": "2026",
+    "size": "Dembel",
+    "collab": "",
+    "location": "Dembel, Addis Ababa"
+  },
+  "Sheraton-2026": {
+    "title": "Sheraton Addis Hotel",
+    "year": "2026",
+    "size": "Sheraton",
+    "collab": "Affinity Construction",
+    "location": "Sheraton, Addis Ababa"
+  },
+  "The Box Gym-2023": {
+    "title": "The Box Gym",
+    "year": "2023",
+    "size": "Haya Arat",
+    "collab": "",
+    "location": "Haya Arat, Addis Ababa"
+  },
+  "Savor-2024": {
+    "title": "Savor Restaurant",
+    "year": "2025",
+    "size": "Flamingo",
+    "collab": "",
+    "location": "Flamingo, Addis Ababa"
+  },
+  "Apartment Mural-2026": {
+    "title": "Apartment Mural",
+    "year": "2026",
+    "size": "Adey Ababa",
+    "collab": "",
+    "location": "Adey Ababa, Addis Ababa"
+  },
+  "Layers of Memory-Exhibition": {
+    "title": "Layers of Memory",
+    "year": "2025",
+    "size": "The Social Addis",
+    "collab": "Efrata Birhanu",
+    "location": "The Social Addis Art Gallery, Addis Ababa"
+  },
+  "Beyond the Street-Exhibition": {
+    "title": "Beyond the Street",
+    "year": "2025",
+    "size": "Artawi Gallery",
+    "collab": "Efrata Birhanu & Mussie Belachew",
+    "location": "Artawi Gallery"
+  },
+  "Mural Workshop": {
+    "title": "Mural Workshop I",
+    "year": "2025",
+    "size": "Artawi Gallery",
+    "collab": "",
+    "location": "Artawi Gallery"
+  },
+  "Mural Workshop II-2025": {
+    "title": "Mural Workshop II",
+    "year": "2025",
+    "size": "Legacy Modeling Studio",
+    "collab": "",
+    "location": "Legacy Modeling Studio, Addis Ababa"
+  },
+  "Harar Beer": {
+    "title": "Harar Beer",
+    "year": "2024",
+    "size": "Digital",
+    "collab": ""
+  },
+  "Heineken & Walia Beer": {
+    "title": "Heineken & Walia Beer",
+    "year": "2024",
+    "size": "Digital",
+    "collab": ""
+  },
+  "Buna and Barley": {
+    "title": "Buna and Barley",
+    "year": "2025",
+    "size": "Digital",
+    "collab": ""
+  },
+  "Nigus Malt-Youthopians": {
+    "title": "Negus Malt",
+    "year": "2025",
+    "size": "Set Design",
+    "collab": "Youthopians"
+  },
+  "Sun Chips": {
+    "title": "Sun Chips",
+    "year": "2025",
+    "size": "Set Design",
+    "collab": "Qine Films"
+  },
+  "7up": {
+    "title": "7up",
+    "year": "2025",
+    "size": "Set Design",
+    "collab": "Qine Films"
+  },
+  "Mekbib Tadessse-Photoshoot": {
+    "title": "Mekbib Tadesse",
+    "year": "2025",
+    "size": "Set Design",
+    "collab": ""
+  },
+  "Ambo Water": {
+    "title": "Ambo Water",
+    "year": "2025",
+    "size": "Set Design",
+    "collab": "Youthopians"
+  },
+  "Zemen Bank": {
+    "title": "Zemen Bank",
+    "year": "2025",
+    "size": "Set Design",
+    "collab": "Youthopians"
+  },
+  "Dalga Leather-Gezat Communications": {
+    "title": "Dalga Leather",
+    "year": "2025",
+    "size": "Set Design",
+    "collab": "Gezat Communications"
+  }
 }

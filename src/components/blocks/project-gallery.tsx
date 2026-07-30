@@ -79,7 +79,7 @@ const FEATURED_IMAGE_MAP: Record<string, string> = {
   'Layers of memory-2025-Ephrata Birhanu': 'IMG_2792.webp',
   'Sheraton-2026': 'IMG_1179.webp',
   'Savor-2024': 'IMG_1214.webp',
-  'Fabrica-2025': 'IMG_1472.webp',
+  'Fabrica-2025': 'IMG_1470.webp',
   'Sosha-2025-2.2x3.5m': 'IMG_0988.webp',
   'Youthopians-2026': 'IMG_1005.webp',
   'Signature Residence-2025': 'IMG_2336.webp',
@@ -106,7 +106,7 @@ function resolveProjectEntry(
       ...resolved.images.filter((img) => img !== featuredImg)
     ];
   }
-  
+
   return resolved;
 }
 
@@ -160,7 +160,7 @@ export default function ProjectGallery() {
       <div className="w-full">
         <div className="px-6 md:px-20 mb-12">
           <p className="text-4xl sm:text-6xl md:text-9xl font-black text-white tracking-tighter leading-none">
-             THE <span className="emphasis font-normal text-brand-sand">Vault</span>
+            THE <span className="emphasis font-normal text-brand-sand">Vault</span>
           </p>
         </div>
 
@@ -171,11 +171,10 @@ export default function ProjectGallery() {
               onClick={() => {
                 setActiveTab(cat);
               }}
-              className={`relative flex-shrink-0 px-6 py-2 md:px-12 md:py-4 transition-all duration-300 group cursor-pointer whitespace-nowrap ${
-                activeTab.id === cat.id ? 'z-40' : 'text-white/40 hover:text-white z-0'
-              }`}
+              className={`relative flex-shrink-0 px-6 py-2 md:px-12 md:py-4 transition-all duration-300 group cursor-pointer whitespace-nowrap ${activeTab.id === cat.id ? 'z-40' : 'text-white/40 hover:text-white z-0'
+                }`}
             >
-              <div 
+              <div
                 className="absolute inset-0 transition-all duration-500 origin-bottom rounded-t-2xl md:rounded-t-3xl"
                 style={{
                   backgroundColor: cat.color,
@@ -183,7 +182,7 @@ export default function ProjectGallery() {
                   boxShadow: activeTab.id === cat.id ? '0 -5px 30px rgba(0,0,0,0.3)' : 'none',
                 }}
               />
-              <span 
+              <span
                 className="relative z-30 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] pointer-events-none"
                 style={{ color: activeTab.id === cat.id ? cat.textColor : 'inherit' }}
               >
@@ -193,9 +192,9 @@ export default function ProjectGallery() {
           ))}
         </div>
 
-        <div 
+        <div
           className="relative w-full min-h-[90vh] transition-colors duration-700 border-t border-white/10"
-          style={{ 
+          style={{
             backgroundColor: activeTab.color
           }}
         >
@@ -220,20 +219,20 @@ export default function ProjectGallery() {
                   </p>
                 )}
                 {activeProjects.map((project, idx) => (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     className="flex flex-col cursor-pointer group"
                     onClick={() => setSelectedProject(project)}
                   >
                     <div className="aspect-[4/5] relative overflow-hidden shadow-2xl mb-4 border border-white/5 bg-brand-obsidian/10">
                       {project.img ? (
-                         <Image 
-                           src={project.img} 
-                           alt={project.title}
-                           fill
-                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                           className="object-cover object-center"
-                         />
+                        <Image
+                          src={project.img}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          className="object-cover object-center"
+                        />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-black/20 p-6 text-center">
                           <span className="text-xs uppercase font-bold opacity-40" style={{ color: activeTab.textColor }}>
@@ -242,43 +241,43 @@ export default function ProjectGallery() {
                         </div>
                       )}
 
-                        {/* Thumbnail Grid - Appears inside viewport on hover */}
-                        {project.allImgs.length > 1 && (
-                          <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 z-20">
-                            {/* Extra count shown above the grid */}
-                            {project.allImgs.length > 5 && (
-                              <div className="absolute -top-10 right-0 bg-white/10 backdrop-blur-md px-3 py-1 text-white border border-white/20 shadow-xl">
-                                <span className="text-[10px] font-black italic">+{project.allImgs.length - 5} MORE</span>
-                              </div>
-                            )}
-                            
-                            <div className="grid grid-cols-4 gap-2">
-                              {project.allImgs.slice(1, 5).map((img: string, i: number) => (
-                                <div key={i} className="aspect-square relative overflow-hidden border border-white/20 shadow-lg">
-                                  <Image 
-                                    src={img}
-                                    alt={`${project.title} gallery ${i}`}
-                                    fill
-                                    className="object-cover"
-                                  />
-                                </div>
-                              ))}
+                      {/* Thumbnail Grid - Appears inside viewport on hover */}
+                      {project.allImgs.length > 1 && (
+                        <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 z-20">
+                          {/* Extra count shown above the grid */}
+                          {project.allImgs.length > 5 && (
+                            <div className="absolute -top-10 right-0 bg-white/10 backdrop-blur-md px-3 py-1 text-white border border-white/20 shadow-xl">
+                              <span className="text-[10px] font-black italic">+{project.allImgs.length - 5} MORE</span>
                             </div>
+                          )}
+
+                          <div className="grid grid-cols-4 gap-2">
+                            {project.allImgs.slice(1, 5).map((img: string, i: number) => (
+                              <div key={i} className="aspect-square relative overflow-hidden border border-white/20 shadow-lg">
+                                <Image
+                                  src={img}
+                                  alt={`${project.title} gallery ${i}`}
+                                  fill
+                                  className="object-cover"
+                                />
+                              </div>
+                            ))}
                           </div>
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-brand-obsidian/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-obsidian/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                     </div>
-                    
+
                     <div className="border-b border-white/10 pb-6">
                       <div className="flex justify-between items-center mb-6 gap-4">
-                        <h3 
+                        <h3
                           className="text-2xl font-black leading-tight tracking-tight uppercase"
                           style={{ color: activeTab.titleColor }}
                         >
                           {project.title}
                         </h3>
                         {project.collaborators && (
-                          <p 
+                          <p
                             className="text-[10px] font-bold tracking-wider opacity-60 uppercase text-right leading-tight"
                             style={{ color: activeTab.textColor }}
                           >
@@ -286,16 +285,16 @@ export default function ProjectGallery() {
                           </p>
                         )}
                       </div>
-                      
+
                       <div className="flex justify-between items-end">
-                        <p 
-                          className="text-sm font-medium leading-none" 
+                        <p
+                          className="text-sm font-medium leading-none"
                           style={{ color: activeTab.textColor }}
                         >
                           {project.size || 'Mural project'}
                         </p>
-                        <span 
-                          className="emphasis text-2xl leading-none" 
+                        <span
+                          className="emphasis text-2xl leading-none"
                           style={{ color: activeTab.textColor }}
                         >
                           {project.year}

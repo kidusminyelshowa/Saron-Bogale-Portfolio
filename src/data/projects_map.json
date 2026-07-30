@@ -25,10 +25,6 @@
       "IMG_2719.webp",
       "IMG_7047.webp"
     ],
-    "Italian Cultural Institute-2021-ASA-2.5x6m": [
-      "IMG_8054.webp",
-      "IMG_8055.webp"
-    ],
     "Ethiopian AI Institute-Timbuktoo Africa-2026-320m2": [
       "IMG_5398.webp",
       "IMG_5403.webp",
@@ -42,6 +38,9 @@
     ],
     "French Embassy": [
       "IMG_2250.webp"
+    ],
+    "Italian Cultural Institute-2021-ASA-2.5x6m": [
+      "IMG_8055.webp"
     ]
   },
   "Steet Art": {
@@ -113,9 +112,9 @@
     "Fabrica-2025": {
       "folder": "Commissions/Restaurants",
       "images": [
-        "IMG_1285.webp",
         "IMG_1470.webp",
         "IMG_1472.webp",
+        "IMG_1285.webp",
         "IMG_1475.webp"
       ]
     },
@@ -271,9 +270,11 @@
       "IMG_2983.webp",
       "IMG_2984.webp"
     ],
-    "Sun Chips & 7up-Qine Films": [
-      "IMG_8062.webp",
+    "Sun Chips": [
       "IMG_8064.webp"
+    ],
+    "7up": [
+      "IMG_8062.webp"
     ],
     "Mekbib Tadessse-Photoshoot": [
       "468284319_18467707171060816_9036183243434907833_n.webp",
@@ -281,8 +282,10 @@
       "IMG_8061.webp",
       "SnapInsta.to_468210258_18467707165060816_2433213377132882359_n.webp"
     ],
-    "Ambo Water & Zemen Bank-Youthopians": [
-      "IMG_8063.webp",
+    "Ambo Water": [
+      "IMG_8063.webp"
+    ],
+    "Zemen Bank": [
       "IMG_8065.webp"
     ],
     "Dalga Leather-Gezat Communications": [

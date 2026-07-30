@@ -29,7 +29,7 @@ const meaCulpa = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Saron Bogale - Portfolio",
+  title: "Saron Bogale",
   description: "The digital portfolio of Saron Bogale",
 };
 

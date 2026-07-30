@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import { motion, AnimatePresence, useMotionValue, useTransform, animate, type MotionValue } from 'framer-motion';
 
 // Paths copied directly from public/SVG/Saron Name.svg
 const PATHS = [
@@ -14,46 +14,135 @@ const PATHS = [
   "M1528.71,612.04c-.39-14.86,1.06-28.95,2.51-43.43,7.55-67.03,19.61-133.18,32.61-199.29,6.64-33.15,13.56-66.13,21.78-99.02,3.06-11.41,5.47-22.74,10.52-33.82,4.61-9.14,11.69-17.32,25.95-20.62,10.34-3.49,28.65,4.2,32.16,9.88,5.6,6.06,6.44,9,7.7,11.65,1.92,4.88,2.47,8.04,2.86,12.69,1.26,14.92,3.08,29.93,4.99,44.88,9.35,71.59,19.76,143.66,32.66,214.61,3.88,20.58,9.21,48.09,14.55,64.3-3.96-7.11-9.98-12.04-18.05-15.22-17.85-6.92-39.27,2.03-46.38,19.6-.77,1.99-.82,2.24-1.18,3.61.47-2.27,2.45-11.21,2.99-13.69,16.2-72.41,34.87-144.16,56.18-215.31,31.9-104.44,67.69-208.84,121.25-304.94,29.09-47.11,98.39-8.36,72.89,41.29-25.75,44-47.09,91.43-66.23,139.14-47.31,119.61-83.54,244.55-113.19,369.9-3.07,14.76-13.1,27.91-28.68,32.25-21.87,5.95-41.34-6.89-48.97-26.76-5.3-13.39-7.99-26.82-10.98-40.23-16.13-79.76-27.6-159.7-36.54-240.43-2.4-22.46-4.48-45.16-5.65-67.87,0,0-.03-.67-.03-.67,0,0,.05.53.05.53.42,3.42.79,5.23,2.3,9.08,1.18,2.46,1.93,5.21,7.38,11.12,3.38,5.51,21.46,13.13,31.6,9.69,10.36-2.51,13.46-5.92,15.84-7.69,3.73-3.41,4.99-5.04,7.06-8.56-10.21,29.34-22.65,78.46-32.17,114.88-13.04,51.18-25.71,102.57-37.17,154.12-5.21,24.66-11.15,49.48-13.75,74.35-2.13,29.98-44.64,30.02-46.84,0h0Z"
 ] as const;
 
-// Stagger delay between paths
-const PATH_STAGGER = 0.15;
-// Duration of stroke drawing animation for one path
-const DRAW_DURATION = 1.0;
-// Stagger count is 7, so total draw time is (6 * 0.15) + 1.0 + buffer ≈ 2.2 seconds
-const MIN_WAIT_MS = 2200;
+// ─── Critical assets to preload ────────────────────────────────────
+// These are the above-the-fold and immediately-visible assets.
+// We only track the most important ones to give an honest percentage.
+const CRITICAL_ASSETS = [
+  // Hero images
+  '/saron_header.webp',
+  '/4790d18e687b61cef98fc97a6ebedf00_032851.jpg',
+  // In-action photo
+  '/saron_in_action.webp',
+  // Partner logos (visible in collaborators marquee)
+  '/Partners/photo_2026-07-23_17-01-19.png',
+  '/Partners/photo_2026-07-23_17-02-03.png',
+  '/Partners/photo_2026-07-23_17-02-09.png',
+  '/Partners/photo_2026-07-23_17-02-15.png',
+  '/Partners/photo_2026-07-23_17-02-20.png',
+  '/Partners/photo_2026-07-23_17-02-25.png',
+  '/Partners/photo_2026-07-23_17-02-30.png',
+  '/Partners/photo_2026-07-23_17-02-34.png',
+  '/Partners/photo_2026-07-23_17-02-39.png',
+  '/Partners/photo_2026-07-23_17-02-43.png',
+  '/Partners/photo_2026-07-23_17-02-49.png',
+  '/Partners/photo_2026-07-23_17-02-54.png',
+  '/Partners/photo_2026-07-23_17-02-58.png',
+  // Featured section images
+  '/Features/1772930200606.jpg',
+  '/Features/1771432998872.jpg',
+  '/Features/maxresdefault.jpg',
+  '/Features/Screenshot 2026-06-13 083718.png',
+];
+
+// Minimum time the loader stays visible so the SVG animation has time to play.
+// Even if all assets loaded from cache instantly, we show at least this long.
+const MIN_DISPLAY_MS = 2400;
 
 export default function Loader({ onComplete }: { onComplete: () => void }) {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isDone, setIsDone] = useState(false);
+
+  // Smoothly animated progress value (0 → 1)
+  const progress = useMotionValue(0);
+
+  // Ref to track the raw (un-smoothed) loaded ratio
+  const rawProgress = useRef(0);
+  const startTime = useRef(Date.now());
+
+  const finishLoading = useCallback(() => {
+    const elapsed = Date.now() - startTime.current;
+    const remaining = Math.max(0, MIN_DISPLAY_MS - elapsed);
+
+    // Animate progress to 1.0 (final push)
+    animate(progress, 1, { duration: Math.max(0.3, remaining / 1000), ease: 'easeOut' });
+
+    setTimeout(() => {
+      setIsDone(true);
+    }, remaining + 350); // small extra buffer after the final animation
+  }, [progress]);
 
   useEffect(() => {
-    const startTime = Date.now();
+    let loadedCount = 0;
+    const total = CRITICAL_ASSETS.length;
+    let finished = false;
 
-    const handleLoad = () => {
-      const elapsedTime = Date.now() - startTime;
-      const remainingTime = Math.max(0, MIN_WAIT_MS - elapsedTime);
+    const onAssetReady = () => {
+      loadedCount++;
+      rawProgress.current = loadedCount / total;
 
-      setTimeout(() => {
-        setIsLoaded(true);
-      }, remainingTime);
+      // Smoothly animate toward the new raw progress
+      animate(progress, rawProgress.current, { duration: 0.4, ease: 'easeOut' });
+
+      if (loadedCount >= total && !finished) {
+        finished = true;
+        finishLoading();
+      }
     };
 
-    if (document.readyState === 'complete') {
-      handleLoad();
-    } else {
-      window.addEventListener('load', handleLoad);
-      return () => window.removeEventListener('load', handleLoad);
+    // Preload each asset via Image objects
+    const preloaders: HTMLImageElement[] = [];
+
+    CRITICAL_ASSETS.forEach((src) => {
+      const img = new window.Image();
+      img.onload = onAssetReady;
+      img.onerror = onAssetReady; // count errors as "loaded" so we don't hang
+      img.src = src;
+      preloaders.push(img);
+    });
+
+    // Also wait for fonts via document.fonts.ready
+    if (typeof document !== 'undefined' && document.fonts) {
+      document.fonts.ready.then(() => {
+        // Fonts ready is a bonus signal — bump progress slightly if still loading
+        if (!finished) {
+          const bump = Math.min(rawProgress.current + 0.05, 0.99);
+          animate(progress, bump, { duration: 0.3, ease: 'easeOut' });
+        }
+      });
     }
-  }, []);
+
+    // Safety timeout: if assets haven't loaded within 12s, force complete
+    const safetyTimeout = setTimeout(() => {
+      if (!finished) {
+        finished = true;
+        finishLoading();
+      }
+    }, 12000);
+
+    return () => {
+      clearTimeout(safetyTimeout);
+      preloaders.forEach((img) => {
+        img.onload = null;
+        img.onerror = null;
+      });
+    };
+  }, [progress, finishLoading]);
+
+  // Map progress to per-path draw amount.
+  // Each path "starts" drawing at a staggered offset so they cascade in sequence,
+  // but the overall cascade is driven by real load progress instead of time.
+  const pathCount = PATHS.length;
 
   return (
     <AnimatePresence onExitComplete={onComplete}>
-      {!isLoaded && (
+      {!isDone && (
         <motion.div
           key="loader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-brand-deep-space-blue"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-brand-deep-space-blue"
         >
+          {/* SVG Name Drawing */}
           <div className="w-[min(90vw,900px)] h-auto select-none p-4 sm:p-8 flex items-center justify-center">
             <svg
               viewBox="0 0 1910.21 732.08"
@@ -63,43 +152,19 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
             >
               <g id="Layer_1-2" data-name="Layer 1">
                 {PATHS.map((d, i) => {
-                  const staggerDelay = i * PATH_STAGGER;
+                  // Each path gets a "window" of the total progress bar.
+                  // Path 0 starts drawing at progress=0, last path finishes at progress=1.
+                  const staggerFraction = 0.12;
+                  const pathStart = i * staggerFraction;
+                  const pathEnd = pathStart + (1 - (pathCount - 1) * staggerFraction);
+
                   return (
-                    <motion.path
+                    <ProgressDrivenPath
                       key={i}
                       d={d}
-                      fill="#BFD7EA" // --brand-pale-sky color
-                      stroke="#BFD7EA"
-                      strokeWidth={1.5}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      initial={{
-                        pathLength: 0,
-                        fillOpacity: 0,
-                        strokeOpacity: 0.8
-                      }}
-                      animate={{
-                        pathLength: 1,
-                        fillOpacity: 1,
-                        strokeOpacity: 0
-                      }}
-                      transition={{
-                        pathLength: {
-                          duration: DRAW_DURATION,
-                          delay: staggerDelay,
-                          ease: [0.45, 0.05, 0.25, 1]
-                        },
-                        fillOpacity: {
-                          duration: 0.6,
-                          delay: staggerDelay + 0.6,
-                          ease: "easeOut"
-                        },
-                        strokeOpacity: {
-                          duration: 0.3,
-                          delay: staggerDelay + 1.0,
-                          ease: "easeOut"
-                        }
-                      }}
+                      progress={progress}
+                      pathStart={pathStart}
+                      pathEnd={pathEnd}
                     />
                   );
                 })}
@@ -112,3 +177,40 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
   );
 }
 
+// ─── Sub-component: a single SVG path whose draw is driven by a MotionValue ──
+function ProgressDrivenPath({
+  d,
+  progress,
+  pathStart,
+  pathEnd,
+}: {
+  d: string;
+  progress: MotionValue<number>;
+  pathStart: number;
+  pathEnd: number;
+}) {
+  // Map the global progress [pathStart..pathEnd] → [0..1] for this path
+  const pathLength = useTransform(progress, [pathStart, pathEnd], [0, 1]);
+  const fillOpacity = useTransform(progress, [pathStart, Math.min(pathEnd + 0.05, 1)], [0, 1]);
+  const strokeOpacity = useTransform(
+    progress,
+    [pathStart, (pathStart + pathEnd) / 2, pathEnd],
+    [0.8, 0.6, 0]
+  );
+
+  return (
+    <motion.path
+      d={d}
+      fill="#BFD7EA"
+      stroke="#BFD7EA"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{
+        pathLength,
+        fillOpacity,
+        strokeOpacity,
+      }}
+    />
+  );
+}

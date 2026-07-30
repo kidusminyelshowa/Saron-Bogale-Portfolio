@@ -92,6 +92,8 @@ export default function Home() {
                   sizes="(max-width: 1024px) 10vw, 50vw"
                   style={{ objectPosition: 'center center' }}
                   className="object-cover"
+                  unoptimized
+                  priority
                 />
               </div>
             </div>

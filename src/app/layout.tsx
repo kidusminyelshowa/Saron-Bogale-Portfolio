@@ -29,7 +29,7 @@ const meaCulpa = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Saron Bogale | Architect & Muralist",
+  title: "Saron Bogale",
   description: "Saron Bogale is an architect, muralist and set designer based in Addis Ababa, Ethiopia. Founder of JONIYA Studio.",
   openGraph: {
     title: "Saron Bogale",

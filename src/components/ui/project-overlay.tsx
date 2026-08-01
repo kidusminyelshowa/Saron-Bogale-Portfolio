@@ -7,7 +7,8 @@ interface ProjectOverlayProps {
   project: {
     title: string;
     year: string;
-    size?: string;
+    collaborators?: string;
+    location?: string;
     allImgs: string[];
   };
   color: string;      // tab background color
@@ -95,12 +96,16 @@ export default function ProjectOverlay({
               <span className="emphasis text-2xl" style={{ color: '#06121C' }}>
                 {project.year}
               </span>
-              {project.size && (
+              {(project.collaborators || project.location) && (
                 <span
                   className="text-xs font-bold uppercase tracking-widest"
                   style={{ color: '#06121C', opacity: 0.6 }}
                 >
-                  {project.size}
+                  {project.collaborators && project.collaborators.trim()
+                    ? `w/ ${project.collaborators}`
+                    : project.location && project.location.trim()
+                    ? `@ ${project.location}`
+                    : ''}
                 </span>
               )}
             </div>

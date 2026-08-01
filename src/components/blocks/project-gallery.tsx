@@ -276,25 +276,28 @@ export default function ProjectGallery() {
                         >
                           {project.title}
                         </h3>
-                        {project.collaborators && (
+                      </div>
+
+                      <div className="flex justify-between items-end gap-4">
+                        {project.collaborators && project.collaborators.trim() ? (
                           <p
-                            className="text-[10px] font-bold tracking-wider opacity-60 uppercase text-right leading-tight"
+                            className="text-[10px] font-bold tracking-wider opacity-60 uppercase leading-tight"
                             style={{ color: activeTab.textColor }}
                           >
                             w/ <br /> {project.collaborators}
                           </p>
+                        ) : project.location && project.location.trim() ? (
+                          <p
+                            className="text-[10px] font-bold tracking-wider opacity-60 uppercase leading-tight"
+                            style={{ color: activeTab.textColor }}
+                          >
+                            @ <br /> {project.location}
+                          </p>
+                        ) : (
+                          <div />
                         )}
-                      </div>
-
-                      <div className="flex justify-between items-end">
-                        <p
-                          className="text-sm font-medium leading-none"
-                          style={{ color: activeTab.textColor }}
-                        >
-                          {project.size || 'Mural project'}
-                        </p>
                         <span
-                          className="emphasis text-2xl leading-none"
+                          className="emphasis text-2xl leading-none shrink-0"
                           style={{ color: activeTab.textColor }}
                         >
                           {project.year}

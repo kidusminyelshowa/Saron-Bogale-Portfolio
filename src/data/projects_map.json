@@ -217,7 +217,7 @@
         "photo_2026-06-12_15-51-06.webp"
       ]
     },
-    "Beyond the Street-Exhibition": {
+    "Beyond the Streets-Exhibition": {
       "folder": "Exhibition",
       "images": [
         "IMG_0235.webp",
@@ -256,9 +256,11 @@
       "IMG_0995.webp",
       "IMG_1003.webp"
     ],
-    "Heineken & Walia Beer": [
-      "IMG_1042.webp",
+    "Heineken": [
       "IMG_1171.webp"
+    ],
+    "Walia Beer": [
+      "IMG_1042.webp"
     ],
     "Buna and Barley": [
       "photo_2026-07-23_15-36-00.webp"
@@ -266,9 +268,9 @@
   },
   "Set Design": {
     "Nigus Malt-Youthopians": [
+      "IMG_2984.webp",
       "IMG_2982.webp",
-      "IMG_2983.webp",
-      "IMG_2984.webp"
+      "IMG_2983.webp"
     ],
     "Sun Chips": [
       "IMG_8064.webp"

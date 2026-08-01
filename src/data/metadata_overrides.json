@@ -11,7 +11,7 @@
     "year": "2025",
     "size": "~320m²",
     "collab": "",
-    "location": "Addis Ababa"
+    "location": "Wello Sefer, Addis Ababa"
   },
   "Timbuktoo Africa-UNDP-2025": {
     "title": "Timbuktoo Africa-UNDP",
@@ -46,7 +46,7 @@
     "year": "2023",
     "size": "5x2",
     "collab": "",
-    "location": "Addis Ababa"
+    "location": "French Embassy, Addis Ababa"
   },
   "Ethiopian skatepark -Corridor Project-2025-430m2": {
     "title": "Ethio Skate Park I",
@@ -195,8 +195,8 @@
     "collab": "Efrata Birhanu",
     "location": "The Social Addis Art Gallery, Addis Ababa"
   },
-  "Beyond the Street-Exhibition": {
-    "title": "Beyond the Street",
+  "Beyond the Streets-Exhibition": {
+    "title": "Beyond the Streets",
     "year": "2025",
     "size": "Artawi Gallery",
     "collab": "Efrata Birhanu & Mussie Belachew",
@@ -220,13 +220,19 @@
     "title": "Harar Beer",
     "year": "2024",
     "size": "Digital",
-    "collab": ""
+    "collab": "Cactus"
   },
-  "Heineken & Walia Beer": {
-    "title": "Heineken & Walia Beer",
+  "Heineken": {
+    "title": "Heineken",
     "year": "2024",
     "size": "Digital",
-    "collab": ""
+    "collab": "Cactus"
+  },
+  "Walia Beer": {
+    "title": "Walia Beer",
+    "year": "2024",
+    "size": "Digital",
+    "collab": "Cactus"
   },
   "Buna and Barley": {
     "title": "Buna and Barley",

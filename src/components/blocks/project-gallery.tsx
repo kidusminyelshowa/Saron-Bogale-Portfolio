@@ -158,20 +158,20 @@ export default function ProjectGallery() {
   return (
     <section className="bg-brand-obsidian pt-24 pb-0 overflow-hidden">
       <div className="w-full">
-        <div className="px-6 md:px-20 mb-12">
-          <p className="text-4xl sm:text-6xl md:text-9xl font-black text-white tracking-tighter leading-none">
+        <div className="px-6 md:px-12 xl:px-20 mb-12">
+          <p className="text-4xl sm:text-6xl md:text-8xl xl:text-9xl font-black text-white tracking-tighter leading-none">
             THE <span className="emphasis font-normal text-brand-sand">Vault</span>
           </p>
         </div>
 
-        <div className="flex overflow-x-auto no-scrollbar items-end relative z-10 px-6 md:px-10 -mb-[1px]">
+        <div className="flex overflow-x-auto no-scrollbar items-end relative z-10 px-4 sm:px-6 md:px-10 -mb-[1px]">
           {CATEGORY_CONFIG.map((cat) => (
             <button
               key={cat.id}
               onClick={() => {
                 setActiveTab(cat);
               }}
-              className={`relative flex-shrink-0 px-6 py-2 md:px-12 md:py-4 transition-all duration-300 group cursor-pointer whitespace-nowrap ${activeTab.id === cat.id ? 'z-40' : 'text-white/40 hover:text-white z-0'
+              className={`relative flex-shrink-0 px-4 sm:px-6 md:px-8 xl:px-10 py-2 md:py-4 transition-all duration-300 group cursor-pointer whitespace-nowrap ${activeTab.id === cat.id ? 'z-40' : 'text-white/40 hover:text-white z-0'
                 }`}
             >
               <div
@@ -200,7 +200,7 @@ export default function ProjectGallery() {
         >
 
 
-          <div className="p-8 md:p-24">
+          <div className="p-6 md:p-12 xl:p-20 2xl:p-24">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab.id}
@@ -208,7 +208,7 @@ export default function ProjectGallery() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 xl:gap-12"
               >
                 {activeProjects.length === 0 && (
                   <p

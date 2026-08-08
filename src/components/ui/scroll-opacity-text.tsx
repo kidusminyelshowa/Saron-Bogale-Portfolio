@@ -31,9 +31,9 @@ export default function ScrollOpacityText({ text, title, className }: ScrollOpac
   };
 
   return (
-    <div className="relative w-full py-10 md:py-16 bg-transparent">
-      <div className="max-w-[1800px] mx-auto px-6 md:px-24">
-        <div className="max-w-3xl lg:max-w-4xl mx-auto lg:ml-auto text-center lg:text-left transform lg:translate-x-[100px] lg:-translate-y-[50px]">
+    <div className="relative w-full py-6 md:py-12 bg-transparent">
+      <div className="max-w-[1800px] mx-auto px-4 md:px-12 xl:px-20">
+        <div className="max-w-3xl lg:max-w-4xl mx-auto lg:ml-auto text-center lg:text-left">
           {title && (
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-black mb-6 md:mb-8 tracking-tighter leading-none text-brand-obsidian pointer-events-none">
               {title.split(' ').map((word, i) => (

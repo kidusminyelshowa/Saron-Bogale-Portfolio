@@ -213,14 +213,14 @@ const ScrollExpandMedia = ({
           {/* Desktop Right Side Panel: Plain Light Background with Bio */}
           {isDesktop && (
             <motion.div
-              className='absolute top-0 right-0 bottom-0 z-20 bg-brand-sand flex items-center justify-center p-8 lg:p-16'
+              className='absolute top-0 right-0 bottom-0 z-20 bg-brand-sand flex items-center justify-center p-6 lg:p-10 xl:p-16'
               style={{
                 width: '39.70vw',
                 opacity: scrollProgress,
                 pointerEvents: showContent ? 'auto' : 'none',
               }}
             >
-              <div className="w-full max-w-4xl text-brand-obsidian translate-x-[-40px]">
+              <div className="w-full max-w-2xl xl:max-w-3xl text-brand-obsidian">
                 {children}
               </div>
             </motion.div>

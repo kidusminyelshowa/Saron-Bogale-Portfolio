@@ -68,7 +68,7 @@ export default function Featured() {
 
   return (
     <section className="bg-brand-sand py-20 md:py-32 border-t border-brand-obsidian/5 text-brand-obsidian overflow-hidden">
-      <div className="max-w-[1700px] mx-auto px-6 md:px-24">
+      <div className="max-w-[1700px] mx-auto px-6 md:px-12 xl:px-24">
 
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
@@ -118,7 +118,7 @@ export default function Featured() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-5%" }}
               transition={{ duration: 0.6, delay: index * 0.1, ease: [0.215, 0.610, 0.355, 1] }}
-              className="w-full md:w-[calc((100%-48px)/3)] flex-shrink-0 snap-start group cursor-pointer"
+              className="w-[85vw] sm:w-[45vw] lg:w-[calc((100%-32px)/3)] xl:w-[calc((100%-48px)/3)] flex-shrink-0 snap-start group cursor-pointer"
             >
               <a href={item.link} className="block space-y-4">
                 {/* Image Container with Hover Effects */}

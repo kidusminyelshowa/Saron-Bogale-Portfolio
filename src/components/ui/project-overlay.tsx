@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface ProjectOverlayProps {
   project: {
@@ -138,14 +139,17 @@ export default function ProjectOverlay({
         >
           <div className="flex items-center gap-4 md:gap-6 h-full px-8 md:px-12 py-8">
             {project.allImgs.map((src, i) => (
-              <img
-                key={i}
-                src={src}
-                alt={`${project.title} — ${i + 1}`}
-                className="h-full w-auto max-h-full object-contain flex-shrink-0"
-                style={{ boxShadow: '0 10px 40px rgba(0,0,0,0.08)' }}
-                draggable={false}
-              />
+              <div key={i} className="relative h-full aspect-[4/3] md:aspect-[16/10] shrink-0">
+                <Image
+                  src={src}
+                  alt={`${project.title} — ${i + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 90vw, 70vw"
+                  className="object-contain flex-shrink-0"
+                  style={{ filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.12))' }}
+                  draggable={false}
+                />
+              </div>
             ))}
             {/* Spacer at the end for visual breathing room */}
             <div className="w-8 md:w-12 flex-shrink-0" />

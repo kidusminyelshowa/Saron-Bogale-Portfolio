@@ -52,10 +52,10 @@ export default function Home() {
         <ProjectGallery />
 
         <section className="bg-brand-sand py-16 md:py-32 text-brand-obsidian">
-          <div className="max-w-[1700px] mx-auto px-6 md:px-24">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+          <div className="max-w-[1700px] mx-auto px-6 md:px-12 xl:px-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-20 items-center">
               <div>
-                <p className="text-3xl sm:text-5xl md:text-7xl font-bold mb-8 md:mb-16 leading-none tracking-tight">
+                <p className="text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-bold mb-8 md:mb-16 leading-none tracking-tight">
                   Crafting <span className="emphasis font-normal">Experiences</span> through Art.
                 </p>
 
@@ -89,10 +89,9 @@ export default function Home() {
                   src="/saron_in_action.webp"
                   alt="Saron Bogale at work"
                   fill
-                  sizes="(max-width: 1024px) 10vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1536px) 50vw, 700px"
                   style={{ objectPosition: 'center center' }}
                   className="object-cover"
-                  unoptimized
                   priority
                 />
               </div>

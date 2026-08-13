@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { X } from 'lucide-react';
 
 interface ProjectOverlayProps {
   project: {
@@ -127,8 +128,9 @@ export default function ProjectOverlay({
               e.currentTarget.style.backgroundColor = 'transparent';
               e.currentTarget.style.color = '#06121C';
             }}
+            aria-label="Close project modal"
           >
-            ✕
+            <X className="w-5 h-5" />
           </button>
         </div>
 
@@ -139,13 +141,26 @@ export default function ProjectOverlay({
         >
           <div className="flex items-center gap-4 md:gap-6 h-full px-8 md:px-12 py-8">
             {project.allImgs.map((src, i) => (
-              <div key={i} className="relative h-full aspect-[4/3] md:aspect-[16/10] shrink-0">
-                <Image
+              <div key={i} className="h-full shrink-0 flex items-center">
+                {/* Mobile view: locked 4:3 aspect ratio card */}
+                <div className="relative h-full aspect-[4/3] shrink-0 md:hidden">
+                  <Image
+                    src={src}
+                    alt={`${project.title} — ${i + 1}`}
+                    fill
+                    sizes="90vw"
+                    className="object-contain"
+                    style={{ filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.12))' }}
+                    draggable={false}
+                  />
+                </div>
+
+                {/* Desktop view: natural aspect ratio image with consistent gap spacing */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src={src}
                   alt={`${project.title} — ${i + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 90vw, 70vw"
-                  className="object-contain flex-shrink-0"
+                  className="hidden md:block h-full w-auto max-w-none object-contain flex-shrink-0"
                   style={{ filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.12))' }}
                   draggable={false}
                 />

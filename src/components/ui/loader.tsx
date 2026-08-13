@@ -15,33 +15,10 @@ const PATHS = [
 ] as const;
 
 // ─── Critical assets to preload ────────────────────────────────────
-// These are the above-the-fold and immediately-visible assets.
-// We only track the most important ones to give an honest percentage.
+// Only preload top above-the-fold hero assets to ensure fast loader dismissal on slow networks.
 const CRITICAL_ASSETS = [
-  // Hero images
   '/saron_header.webp',
   '/4790d18e687b61cef98fc97a6ebedf00_032851.jpg',
-  // In-action photo
-  '/saron_in_action.webp',
-  // Partner logos (visible in collaborators marquee)
-  '/Partners/photo_2026-07-23_17-01-19.png',
-  '/Partners/photo_2026-07-23_17-02-03.png',
-  '/Partners/photo_2026-07-23_17-02-09.png',
-  '/Partners/photo_2026-07-23_17-02-15.png',
-  '/Partners/photo_2026-07-23_17-02-20.png',
-  '/Partners/photo_2026-07-23_17-02-25.png',
-  '/Partners/photo_2026-07-23_17-02-30.png',
-  '/Partners/photo_2026-07-23_17-02-34.png',
-  '/Partners/photo_2026-07-23_17-02-39.png',
-  '/Partners/photo_2026-07-23_17-02-43.png',
-  '/Partners/photo_2026-07-23_17-02-49.png',
-  '/Partners/photo_2026-07-23_17-02-54.png',
-  '/Partners/photo_2026-07-23_17-02-58.png',
-  // Featured section images
-  '/Features/1772930200606.jpg',
-  '/Features/1771432998872.jpg',
-  '/Features/maxresdefault.jpg',
-  '/Features/Screenshot 2026-06-13 083718.png',
 ];
 
 // Minimum time the loader stays visible so the SVG animation has time to play.

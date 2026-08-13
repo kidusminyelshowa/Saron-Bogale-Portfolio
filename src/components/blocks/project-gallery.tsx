@@ -258,6 +258,7 @@ export default function ProjectGallery() {
                                   src={img}
                                   alt={`${project.title} gallery ${i}`}
                                   fill
+                                  sizes="100px"
                                   className="object-cover"
                                 />
                               </div>
